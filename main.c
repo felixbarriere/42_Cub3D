@@ -1,4 +1,4 @@
-#include "cub_3d.h"
+#include "includes/cub_3d.h"
 
 void	ft_free_array(char **array)
 {

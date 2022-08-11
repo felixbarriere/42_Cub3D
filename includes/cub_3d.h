@@ -5,7 +5,7 @@
 #include <stdio.h> //à enlever
 #include <stdlib.h>
 #include <fcntl.h>
-#include "get_next_line/get_next_line.h"
+#include "../get_next_line/get_next_line.h"
 
 typedef struct s_game {
 	char		**array;

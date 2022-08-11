@@ -1,4 +1,4 @@
-#include "cub_3d.h"
+#include "includes/cub_3d.h"
 
 static int	ft_count_lines(char *file)
 {
