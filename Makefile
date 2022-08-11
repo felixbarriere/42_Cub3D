@@ -8,7 +8,7 @@ OBJS = $(SRCS:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-NAME = Cub_3D
+NAME = cub3D
 HEADER = Cub_3D.h
 
 .c.o:

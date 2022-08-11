@@ -1,5 +1,19 @@
 #include "includes/cub_3d.h"
 
+
+int	ft_is_map(char	*str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '1')
+		return (1);
+	else
+		return (0);
+}
+
 static int	ft_count_lines(char *file)
 {
 	int		i;
@@ -9,6 +23,11 @@ static int	ft_count_lines(char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
+	while (line && (ft_is_map(line) == 0))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 	while (line)
 	{
 		free(line);
@@ -35,6 +54,12 @@ char	**fill_array(char	*file)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
+	while (line && (ft_is_map(line) == 0))
+	{
+		// printf("ft_map == 0: %s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
 	while (line != 0)
 	{
 		tab[i] = line;
