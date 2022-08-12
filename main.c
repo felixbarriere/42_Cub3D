@@ -14,19 +14,37 @@ void	ft_free_array(char **array)
 	free(array);
 }
 
+void	ft_free_all(t_game	*game)
+{
+		ft_free_array(game->array);
+		free(game->texture->floor);
+		// game->texture->floor = NULL;
+}
+
+void	ft_print_map(char	**map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("map[i]: %s", map[i]);
+		i++;
+	}
+}
+
 int	main(int	argc, char **argv)
 {
 	t_game	game;
-	int	i;
 
 	(void)argc;
-	i = 0;
-	game.array = fill_array(argv[1]);
-	while (game.array[i])
-	{
-		printf("game.tab[i]: %s", game.array[i]);
-		i++;
-	}
-	ft_free_array(game.array);
+	game.array = fill_array(argv[1], &game);
+	
+
+
+	ft_print_map(game.array);
+	ft_init(&game);
+
+	ft_free_all(&game);
 	return (0);
 }

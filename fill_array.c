@@ -14,6 +14,32 @@ int	ft_is_map(char	*str)
 		return (0);
 }
 
+char	*get_identifier_2(char	*line, int	i)
+{
+	while (line[i] < '0' || line[i] > '9')
+			i++;
+	return (ft_substr(line, i, (ft_strlen(line) - i + 1)));
+}
+
+void	get_identifier(char	*line, t_game	*game)
+{
+	int	i;
+	// (void)game;
+
+	i = 0;
+	// game->texture->floor = ft_calloc(0, 1); //creer une fction d'initialisation gerant la memoire
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == 'F')
+	{
+		game->texture->floor = get_identifier_2(line, i);
+		printf("line floor: %s\n", line);
+		printf("game->texture->floor: %s\n", game->texture->floor);
+	}
+	
+
+}
+
 static int	ft_count_lines(char *file)
 {
 	int		i;
@@ -39,7 +65,7 @@ static int	ft_count_lines(char *file)
 	return (i);
 }
 
-char	**fill_array(char	*file)
+char	**fill_array(char	*file, t_game	*game)
 {
 	char	**tab;
 	int		i;
@@ -56,7 +82,7 @@ char	**fill_array(char	*file)
 	line = get_next_line(fd);
 	while (line && (ft_is_map(line) == 0))
 	{
-		// printf("ft_map == 0: %s", line);
+		get_identifier(line, game);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -71,20 +97,5 @@ char	**fill_array(char	*file)
 	close(fd);
 	return (tab);
 }
-
-// char	*ft_strcpy2(char *dst, char *src)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (src[i])
-// 	{
-// 		dst[i] = src[i];
-// 		i++;
-// 	}
-// 	dst[i] = '\0';
-// 	return (dst);
-// }
-
 
 

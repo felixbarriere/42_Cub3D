@@ -1,12 +1,15 @@
 SRCS = 	main.c \
-		fill_array.c \
 		get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c
+		get_next_line/get_next_line_utils.c \
+		fill_array.c \
+		init.c \
+		libft/utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+MLX = -L minilibx-linux -lmlx -lX11 -lXext -lm
 
 NAME = cub3D
 HEADER = Cub_3D.h
@@ -15,7 +18,7 @@ HEADER = Cub_3D.h
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):	$(OBJS)
-		${CC} ${CFLAGS} $(OBJS)  -Lget_next_line -o $(NAME)
+		${CC} ${CFLAGS} $(OBJS) -Lget_next_line -o $(NAME) $(MLX)
 
 all:		$(NAME)
 

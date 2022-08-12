@@ -1,4 +1,5 @@
- ./textures/walls/Wall_01.xpm
+
+NO ./textures/walls/Wall_01.xpm
         SO ./textures/walls/Wall_03.xpm
 WE ./textures/walls/Wall_06.xpm
 			EA ./textures/walls/Wall_09.xpm
