@@ -9,7 +9,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-MLX = -L minilibx-linux -lmlx -lX11 -lXext -lm
+MLX = -L minilibx-linux -lmlx -lX11 -lXext -lm #ajouter compilation!
 
 NAME = cub3D
 HEADER = Cub_3D.h
