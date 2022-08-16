@@ -4,6 +4,7 @@ SRCS = 	main.c \
 		src/fill_array.c \
 		src/fill_identifiers.c\
 		src/init.c \
+		src/free.c\
 		libft/utils.c \
 
 OBJS = $(SRCS:.c=.o)

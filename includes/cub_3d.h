@@ -27,6 +27,9 @@ char	**fill_array(char	*file, t_game	*game);
 void	ft_init(t_game	*game);
 void	get_identifier(char	*line, t_game	*game);
 
+void	ft_free_array(char **array);
+void	ft_free_all(t_game	*game);
+
 /*********** LIBFT ***********/
 char	*ft_strdup(char *src);
 int		ft_strncmp(char *s1, char *s2, int n);
