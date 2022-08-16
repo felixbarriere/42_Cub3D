@@ -8,26 +8,24 @@
 #include "../minilibx-linux/mlx.h"
 #include "../get_next_line/get_next_line.h"
 
-typedef struct s_texture {
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-	char	*floor;
-	char	*ceilling;
-}				t_texture;
-
 typedef struct s_game {
+	char		*address;
 	char		**array;
 	void		*mlx;
 	void		*mlx_win;
 	void		*img;
-	t_texture	*texture;
+	char		*north_id;
+	char		*south_id;
+	char		*east_id;
+	char		*west_id;
+	char		*floor_id;
+	char		*ceilling_id;
 }				t_game;
 
 
 char	**fill_array(char	*file, t_game	*game);
 void	ft_init(t_game	*game);
+void	get_identifier(char	*line, t_game	*game);
 
 /*********** LIBFT ***********/
 char	*ft_strdup(char *src);

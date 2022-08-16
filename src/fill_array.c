@@ -1,4 +1,4 @@
-#include "includes/cub_3d.h"
+#include "../includes/cub_3d.h"
 
 
 int	ft_is_map(char	*str)
@@ -12,32 +12,6 @@ int	ft_is_map(char	*str)
 		return (1);
 	else
 		return (0);
-}
-
-char	*get_identifier_2(char	*line, int	i)
-{
-	while (line[i] < '0' || line[i] > '9')
-			i++;
-	return (ft_substr(line, i, (ft_strlen(line) - i + 1)));
-}
-
-void	get_identifier(char	*line, t_game	*game)
-{
-	int	i;
-	// (void)game;
-
-	i = 0;
-	// game->texture->floor = ft_calloc(0, 1); //creer une fction d'initialisation gerant la memoire
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (line[i] == 'F')
-	{
-		game->texture->floor = get_identifier_2(line, i);
-		printf("line floor: %s\n", line);
-		printf("game->texture->floor: %s\n", game->texture->floor);
-	}
-	
-
 }
 
 static int	ft_count_lines(char *file)

@@ -1,8 +1,9 @@
 SRCS = 	main.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
-		fill_array.c \
-		init.c \
+		src/fill_array.c \
+		src/fill_identifiers.c\
+		src/init.c \
 		libft/utils.c \
 
 OBJS = $(SRCS:.c=.o)

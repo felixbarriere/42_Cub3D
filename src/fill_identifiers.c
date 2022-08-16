@@ -1,0 +1,36 @@
+#include "../includes/cub_3d.h"
+
+char	*get_identifier_3(char	*line, int	i)
+{
+	while (line[i] == '.')
+			i++;
+	return (ft_substr(line, i, (ft_strlen(line) - i + 1)));
+}
+
+char	*get_identifier_2(char	*line, int	i)
+{
+	while (line[i] < '0' || line[i] > '9')
+			i++;
+	return (ft_substr(line, i, (ft_strlen(line) - i + 1)));
+}
+
+void	get_identifier(char	*line, t_game	*game)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == 'F')
+		game->floor_id = get_identifier_2(line, i);
+	else if (line[i] == 'C')
+		game->ceilling_id = get_identifier_2(line, i);
+	else if (line[i] == 'N' && line[i + 1] == 'O')
+		game->north_id = get_identifier_3(line, i);
+	else if (line[i] == 'S' && line[i + 1] == 'O')
+		game->south_id = get_identifier_3(line, i);
+	else if (line[i] == 'W' && line[i + 1] == 'E')
+		game->west_id = get_identifier_3(line, i);
+	else if (line[i] == 'E' && line[i + 1] == 'A')
+		game->east_id = get_identifier_3(line, i);
+}	
