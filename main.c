@@ -25,7 +25,7 @@ int	main(int	argc, char **argv)
 	// exterieurs pour allouer correctement + allouer en fonction de la + grande size.
 
 	ft_print_map(game.array);
-	// ft_init(&game);
+	ft_init(&game);
 
 	ft_free_all(&game);
 	return (0);

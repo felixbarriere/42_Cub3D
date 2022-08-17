@@ -16,11 +16,17 @@ void	ft_free_array(char **array)
 
 void	ft_free_all(t_game	*game)
 {
-		ft_free_array(game->array);
+	ft_free_array(game->array);
+	if (game->floor_id)
 		free(game->floor_id);
+	if (game->ceilling_id)
 		free(game->ceilling_id);
+	if (game->north_id)
 		free(game->north_id);
+	if (game->south_id)
 		free(game->south_id);
+	if (game->west_id)
 		free(game->west_id);
+	if (game->east_id)
 		free(game->east_id);
 }
