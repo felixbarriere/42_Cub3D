@@ -1,7 +1,5 @@
 #include "includes/cub_3d.h"
 
-
-
 void	ft_print_map(char	**map)
 {
 	int	i;
@@ -26,7 +24,5 @@ int	main(int	argc, char **argv)
 
 	ft_print_map(game.array);
 	ft_init(&game);
-
-	ft_free_all(&game);
 	return (0);
 }

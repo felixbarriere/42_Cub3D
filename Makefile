@@ -2,11 +2,13 @@ SRCS = 	main.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		src/fill_array.c \
-		src/fill_identifiers.c\
+		src/fill_identifiers.c \
 		src/init.c \
 		src/create_map.c \
-		src/free.c\
-		libft/utils.c \
+		src/free.c \
+		src/utils/utils.c\
+		libft/libft_1.c \
+
 
 OBJS = $(SRCS:.c=.o)
 
@@ -15,8 +17,8 @@ CFLAGS = -Wall -Werror -Wextra
 #pour checker les leaks:
 #-fsanitize=leaks -fsanitize=undefined  -fsanitize=address -g3
 
-NAME = cub_3d
-HEADER = cub_3d.h
+NAME = CUB3D
+HEADER = CUB3D.h
 
 .c.o:
 		${CC} ${CFLAGS} -I/usr/include -I ./mlx -c $< -o ${<:.c=.o}

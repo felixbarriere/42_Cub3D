@@ -13,7 +13,36 @@
 typedef struct s_image
 {
 	void		*wall;
+	void		*floor;
 }	t_image;
+
+typedef struct s_raycast
+{
+	int			char_pos_x;		//position x du joueur
+	int			char_pos_y;		//position y du joueur
+	int			dirx; 		//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	int			diry; 		//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double		planx;			 //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
+	double		plany; 			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
+	double		raydirx;	 //calcul de direction x du rayon
+	double		raydiry; 	//calcul de direction y du rayon
+	double		camerax; 	//point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+	int			mapx; 			// coordonée x du carré dans lequel est pos
+	int			mapy; 			// coordonnée y du carré dans lequel est pos
+	double		sidedistx;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
+	double		sidedisty;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
+	double		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
+	double		deltadisty; //distance que le rayon parcours entre chaque point d'intersection horizontal
+	int			stepx; 		// -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
+	int			stepy; 		// -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
+	int			hit; 		// 1 si un mur a ete touche, 0 sinon
+	int			side; 		// 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
+	double		perpwalldist; 	// distance du joueur au mur
+	int			lineheight; 	//hauteur de la ligne a dessiner
+	int			drawstart;	 //position de debut ou il faut dessiner
+	int			drawend; 	//position de fin ou il faut dessiner
+	int			x; 			//permet de parcourir tous les rayons
+}	t_raycast;
 
 typedef struct s_game {
 	char		*address;
@@ -22,6 +51,7 @@ typedef struct s_game {
 	int			endian;
 	char		**array;
 	int			y_size;
+	int			x_size;
 	void		*mlx;
 	void		*mlx_win;
 	void		*img;
@@ -33,6 +63,7 @@ typedef struct s_game {
 	char		*ceilling_id;
 	// void		*wall_img;
 	t_image		image;
+	t_raycast	raycast;
 }				t_game;
 
 
@@ -43,6 +74,13 @@ void	ft_fill_flo(t_game	*game, int x, int y, char **tab);
 
 void	ft_free_array(char **array);
 void	ft_free_all(t_game	*game);
+
+/*********** UTILS ***********/
+void	*ft_img(void *mlx, char *path);
+int		ft_elt_pos_x(char	**array);
+int		ft_elt_pos_y(char	**array);
+int		ft_get_max_y(char	**array);
+int		ft_get_max_x(char	**array);
 
 /*********** LIBFT ***********/
 char	*ft_strdup(char *src);

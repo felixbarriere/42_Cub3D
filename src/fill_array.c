@@ -49,7 +49,6 @@ char	**fill_array(char	*file, t_game	*game)
 
 	i = 0;
 	size = ft_count_lines(file);
-	game->y_size = size;
 	tab = malloc((size + 1) * sizeof(char *));
 	if (!(tab))
 		return (NULL);
