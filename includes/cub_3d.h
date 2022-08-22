@@ -2,6 +2,7 @@
 # define CUB_3D_H
 
 #include <unistd.h>
+#include <math.h>
 #include <stdio.h> //à enlever
 #include <stdlib.h>
 #include <fcntl.h>
@@ -20,15 +21,17 @@ typedef struct s_raycast
 {
 	int			char_pos_x;		//position x du joueur
 	int			char_pos_y;		//position y du joueur
-	int			dirx; 		//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
-	int			diry; 		//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	double		planx;			 //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
+	double		charpos_x_2;
+	double		charpos_y_2;
+	int			dirx; 			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	int			diry; 			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double		planx;			//vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
 	double		plany; 			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
-	double		raydirx;	 //calcul de direction x du rayon
-	double		raydiry; 	//calcul de direction y du rayon
-	double		camerax; 	//point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	int			mapx; 			// coordonée x du carré dans lequel est pos
-	int			mapy; 			// coordonnée y du carré dans lequel est pos
+	double		raydirx;	 	//calcul de direction x du rayon
+	double		raydiry; 		//calcul de direction y du rayon
+	double		camerax; 		//point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+	int			mapx;			// =char_pos_x		// coordonée x du carré dans lequel est pos
+	int			mapy; 			// =char_pos_y	// coordonnée y du carré dans lequel est pos
 	double		sidedistx;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
 	double		sidedisty;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
 	double		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
@@ -41,6 +44,8 @@ typedef struct s_raycast
 	int			lineheight; 	//hauteur de la ligne a dessiner
 	int			drawstart;	 //position de debut ou il faut dessiner
 	int			drawend; 	//position de fin ou il faut dessiner
+	double		movespeed;
+	double		rotspeed;
 	int			x; 			//permet de parcourir tous les rayons
 }	t_raycast;
 
@@ -52,6 +57,8 @@ typedef struct s_game {
 	char		**array;
 	int			y_size;
 	int			x_size;
+	int			res_x;
+	int			res_y;
 	void		*mlx;
 	void		*mlx_win;
 	void		*img;
@@ -82,6 +89,8 @@ int		ft_elt_pos_x(char	**array);
 int		ft_elt_pos_y(char	**array);
 int		ft_get_max_y(char	**array);
 int		ft_get_max_x(char	**array);
+int		ft_close_cross(t_game	*game);
+int		ft_close_esc(int keycode, t_game	*game);
 
 /*********** LIBFT ***********/
 char	*ft_strdup(char *src);
@@ -92,6 +101,6 @@ void	ft_bzero( void *pointer, size_t count );
 // int	ft_strlen(char *str);
 
 /********* RAYCASTING *********/
-void	ft_raycasting(t_game	*game);
+void	ft_raycasting(t_game	*game, t_raycast	*raycast);
 
 #endif
