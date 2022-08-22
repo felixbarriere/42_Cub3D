@@ -72,6 +72,7 @@ void	ft_init(t_game	*game);
 void	get_identifier(char	*line, t_game	*game);
 void	ft_fill_flo(t_game	*game, int x, int y, char **tab);
 
+/*********** FREE ***********/
 void	ft_free_array(char **array);
 void	ft_free_all(t_game	*game);
 
@@ -89,5 +90,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero( void *pointer, size_t count );
 // int	ft_strlen(char *str);
+
+/********* RAYCASTING *********/
+void	ft_raycasting(t_game	*game);
 
 #endif

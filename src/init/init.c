@@ -1,4 +1,4 @@
-#include "../includes/cub_3d.h"
+#include "../../includes/cub_3d.h"
 
 int	ft_close_cross(t_game	*game)
 {
@@ -18,30 +18,42 @@ int	ft_close_esc(int keycode, t_game	*game)
 	return (0);
 }
 
+void	ft_fill_dir_plane(int	dir_zero, int	neg_one, int	one, int plan_zero)
+{
+	dir_zero = 0;
+	neg_one = -1;
+	one = 1;
+	plan_zero = 0;
+	(void)dir_zero;
+	(void)neg_one;
+	(void)one;
+	(void)plan_zero;
+}
+
 void		ft_vector_dir(t_game	*game, char	**array)
 {
 	if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'N')
 	{
-		game->raycast.dirx = 0;
-		game->raycast.diry = -1;
+		ft_fill_dir_plane(game->raycast.dirx, game->raycast.diry, 1, game->raycast.planx);
+		game->raycast.plany = -0.66;
 		printf("char_orientation: %c\n", array[game->raycast.char_pos_y][game->raycast.char_pos_x]);
 	}
 	else if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'S')
 	{
-		game->raycast.dirx = -1;
-		game->raycast.diry = 0;
+		ft_fill_dir_plane(game->raycast.dirx, -1, game->raycast.diry, game->raycast.planx);
+		game->raycast.plany = 0.66;
 		printf("char_orientation: %c\n", array[game->raycast.char_pos_y][game->raycast.char_pos_x]);
 	}
 	else if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'W')
 	{
-		game->raycast.dirx = -1;
-		game->raycast.diry = 0;
+		ft_fill_dir_plane(game->raycast.diry, game->raycast.dirx, 1, game->raycast.plany);
+		game->raycast.planx = -0.66;
 		printf("char_orientation: %c\n", array[game->raycast.char_pos_y][game->raycast.char_pos_x]);
 	}
 	else if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'E')
 	{
-		game->raycast.dirx = 0;
-		game->raycast.diry = -1;
+		ft_fill_dir_plane(game->raycast.diry, -1, game->raycast.dirx, game->raycast.plany);
+		game->raycast.planx = 0.66;
 		printf("char_orientation: %c\n", array[game->raycast.char_pos_y][game->raycast.char_pos_x]);
 	}
 }
@@ -55,7 +67,6 @@ void	ft_init_global(t_game	*game)
 	printf("char_pos_x: %d\n", game->raycast.char_pos_x);
 	printf("char_pos_y: %d\n", game->raycast.char_pos_y);
 	ft_vector_dir(game, game->array);
-
 
 	game->mlx = mlx_init();
 	game->image.wall = ft_img(game->mlx, "img/wall.xpm");
@@ -71,6 +82,8 @@ void	ft_init(t_game	*game)
 {
 	ft_init_global(game);
 	ft_fill_flo(game,  game->x_size,  game->y_size, game->array);
+
+	ft_raycasting(game);
 
 	mlx_hook(game->mlx_win, 2, 1L << 0, ft_close_esc, game);
 	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);

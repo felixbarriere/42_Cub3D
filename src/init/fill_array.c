@@ -1,4 +1,4 @@
-#include "../includes/cub_3d.h"
+#include "../../includes/cub_3d.h"
 
 
 int	ft_is_map(char	*str)

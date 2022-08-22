@@ -1,4 +1,4 @@
-#include "../includes/cub_3d.h"
+#include "../../includes/cub_3d.h"
 
 char	*get_identifier_3(char	*line, int	i)
 {

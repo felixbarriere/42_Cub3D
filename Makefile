@@ -1,10 +1,11 @@
 SRCS = 	main.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
-		src/fill_array.c \
-		src/fill_identifiers.c \
-		src/init.c \
-		src/create_map.c \
+		src/init/fill_array.c \
+		src/init/fill_identifiers.c \
+		src/init/init.c \
+		src/init/create_map.c \
+		src/raycasting/raycasting.c \
 		src/free.c \
 		src/utils/utils.c\
 		libft/libft_1.c \
