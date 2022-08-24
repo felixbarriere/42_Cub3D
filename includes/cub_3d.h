@@ -23,24 +23,24 @@ typedef struct s_raycast
 	int			char_pos_y;		//position y du joueur
 	double		charpos_x_2;
 	double		charpos_y_2;
-	int			dirx; 			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
-	int			diry; 			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	int			dirx; 			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	int			diry; 			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double		planx;			//vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
 	double		plany; 			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 	double		raydirx;	 	//calcul de direction x du rayon
 	double		raydiry; 		//calcul de direction y du rayon
 	double		camerax; 		//point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	int			mapx;			// =char_pos_x		// coordonée x du carré dans lequel est pos
-	int			mapy; 			// =char_pos_y	// coordonnée y du carré dans lequel est pos
-	double		sidedistx;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
-	double		sidedisty;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
+	int			mapx;			// coordonée x du carré dans lequel est le rayon
+	int			mapy; 			// coordonnée y du carré dans lequel est le rayon
+	double		sidedistx;	//distance que le rayon parcours jusqu'au premier point d'intersection x
+	double		sidedisty;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal
 	double		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
 	double		deltadisty; //distance que le rayon parcours entre chaque point d'intersection horizontal
 	int			stepx; 		// -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
 	int			stepy; 		// -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int			hit; 		// 1 si un mur a ete touche, 0 sinon
 	int			side; 		// 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
-	double		perpwalldist; 	// distance du joueur au mur
+	double		perpwalldist; 	// distance du joueur au mur perpendiculaire
 	int			lineheight; 	//hauteur de la ligne a dessiner
 	int			drawstart;	 //position de debut ou il faut dessiner
 	int			drawend; 	//position de fin ou il faut dessiner
@@ -75,7 +75,7 @@ typedef struct s_game {
 
 
 char	**fill_array(char	*file, t_game	*game);
-void	ft_init(t_game	*game);
+void	ft_start(t_game	*game);
 void	get_identifier(char	*line, t_game	*game);
 void	ft_fill_flo(t_game	*game, int x, int y, char **tab);
 
@@ -101,6 +101,6 @@ void	ft_bzero( void *pointer, size_t count );
 // int	ft_strlen(char *str);
 
 /********* RAYCASTING *********/
-void	ft_raycasting(t_game	*game, t_raycast	*raycast);
+int	ft_raycasting(t_game	*game, t_raycast	*raycast);
 
 #endif

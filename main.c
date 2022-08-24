@@ -20,9 +20,9 @@ int	main(int	argc, char **argv)
 	game.array = fill_array(argv[1], &game);
 
 	// il faudra réajuster la map en ajoutant des 1 a la place des espaces 
-	// exterieurs pour allouer correctement + allouer en fonction de la + grande size.
+	// exterieurs pour allouer correctement.
 
 	ft_print_map(game.array);
-	ft_init(&game);
+	ft_start(&game);
 	return (0);
 }

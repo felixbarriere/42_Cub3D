@@ -30,47 +30,49 @@ void	ft_fill_dir_plane(int	dir_zero, int	neg_one, int	one, int plan_zero)
 	(void)plan_zero;
 }
 
-void		ft_vector_dir(t_game	*game, char	**array)
+void		ft_vector_dir(t_raycast	*raycast, char	**array)
 {
-	if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'N')
+	if (array[raycast->char_pos_x][raycast->char_pos_y] == 'N')
 	{
-		ft_fill_dir_plane(game->raycast.diry, game->raycast.dirx, 1,
-									game->raycast.planx);
-		game->raycast.plany = 0.66;
+		ft_fill_dir_plane(raycast->diry, raycast->dirx, 1, raycast->planx);
+		raycast->plany = 0.66;
+		raycast->dirx = -1;
 	}
-	else if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'S')
+	else if (array[raycast->char_pos_x][raycast->char_pos_y] == 'S')
 	{
-		ft_fill_dir_plane(game->raycast.diry, -1, game->raycast.dirx,
-									game->raycast.planx);
-		game->raycast.plany = -0.66;
+		ft_fill_dir_plane(raycast->diry, -1, raycast->dirx, raycast->planx);
+		raycast->plany = -0.66;
+		raycast->dirx = 1;
 	}
-	else if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'W')
+	else if (array[raycast->char_pos_x][raycast->char_pos_y] == 'W')
 	{
-		ft_fill_dir_plane(game->raycast.dirx, game->raycast.diry, 1,
-									game->raycast.plany);
-		game->raycast.planx = -0.66;
+		ft_fill_dir_plane(raycast->dirx, raycast->diry, 1, raycast->plany);
+		raycast->planx = -0.66;
+		raycast->diry = -1;
 	}
-	else if (array[game->raycast.char_pos_y][game->raycast.char_pos_x] == 'E')
+	else if (array[raycast->char_pos_x][raycast->char_pos_y] == 'E')
 	{
-		ft_fill_dir_plane(game->raycast.dirx, -1, game->raycast.diry,
-									game->raycast.plany);
-		game->raycast.planx = 0.66;
+		ft_fill_dir_plane(raycast->dirx, -1, raycast->diry, raycast->plany);
+		raycast->planx = 0.66;
+		raycast->diry = 1;
 	}
 }
 
-void	ft_init_global(t_game	*game)
+void	ft_init_2(t_game	*game)
 {
-	game->x_size = ft_get_max_x(game->array);
-	game->y_size = ft_get_max_y(game->array);
-	game->res_x = game->x_size * 64;
-	game->res_y = game->y_size * 64;
-	game->raycast.char_pos_x = ft_elt_pos_x(game->array);
-	game->raycast.char_pos_y = ft_elt_pos_y(game->array);
-	printf("char_pos_x: %d\n", game->raycast.char_pos_x);
-	printf("char_pos_y: %d\n", game->raycast.char_pos_y);
-	ft_vector_dir(game, game->array);
-
 	game->mlx = mlx_init();
+	mlx_get_screen_size(game->mlx, &game->x_size, &game->y_size);
+	game->res_x = game->x_size;
+	game->res_y = game->y_size;
+	// attention: worldMap[mapWidth][mapHeight] (inverser x et y);
+	game->raycast.char_pos_y = ft_elt_pos_x(game->array);
+	game->raycast.char_pos_x = ft_elt_pos_y(game->array);
+	game->raycast.charpos_x_2 = (double)game->raycast.char_pos_x + 0.5;
+	game->raycast.charpos_y_2 = (double)game->raycast.char_pos_y + 0.5;	
+	game->raycast.mapx = (int)game->raycast.charpos_x_2;
+	game->raycast.mapy = (int)game->raycast.charpos_y_2;
+	ft_vector_dir(&game->raycast, game->array);
+
 	game->image.wall = ft_img(game->mlx, "img/wall.xpm");
 	game->image.floor = ft_img(game->mlx, "img/floor.xpm");
 	game->mlx_win = mlx_new_window(game->mlx, game->res_x,
@@ -80,15 +82,38 @@ void	ft_init_global(t_game	*game)
 							&game->line_length, &game->endian);
 }
 
-void	ft_init(t_game	*game)
+void	ft_init(t_raycast	*raycast)
 {
-	ft_init_global(game);
+	raycast->char_pos_x = 0;
+	raycast->char_pos_y = 0;
+	raycast->dirx = 0;
+	raycast->diry = 0;
+	raycast->planx = 0;
+	raycast->plany = 0;
+	raycast->raydirx = 0;
+	raycast->raydiry = 0;
+	raycast->camerax = 0;
+	raycast->sidedistx = 0;
+	raycast->sidedisty = 0;
+	raycast->stepx = 0;
+	raycast->stepy = 0;
+	raycast->deltadistx = 0;
+	raycast->deltadisty = 0;
+	raycast->hit = 0;
+	raycast->x = 0;
+}
+
+void	ft_start(t_game	*game)
+{
+	ft_init(&game->raycast);
+	ft_init_2(game);
 
 	ft_raycasting(game, &game->raycast);
 	// ft_fill_flo(game,  game->x_size,  game->y_size, game->array); // a enlever avant la 3D
 	
 	mlx_hook(game->mlx_win, 2, 1L << 0, ft_close_esc, game);
 	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
+	// mlx_loop_hook(game->mlx, ft_raycasting, game); //segfault
 	mlx_loop(game->mlx);
 
 	free(game->mlx);
