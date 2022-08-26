@@ -23,8 +23,8 @@ typedef struct s_raycast
 	int			char_pos_y;		//position y du joueur
 	double		charpos_x_2;
 	double		charpos_y_2;
-	int			dirx; 			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	int			diry; 			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double		dirx; 			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double		diry; 			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double		planx;			//vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
 	double		plany; 			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 	double		raydirx;	 	//calcul de direction x du rayon
@@ -49,28 +49,56 @@ typedef struct s_raycast
 	int			x; 			//permet de parcourir tous les rayons
 }	t_raycast;
 
+typedef struct		s_texture
+{
+	int				tex_dir;
+	double			wall_x;
+	int				tex_x;
+	int				tex_y;
+	double			step;
+	double			tex_pos;
+}					t_texture;
+
+typedef struct s_game_2
+{
+	char		*address;
+	int			line_length;
+	int			bits_per_pixel;
+	int			endian;
+	int			height;
+	int			width;
+	void		*img;
+	
+}		t_game_2;
+
 typedef struct s_game {
 	char		*address;
+	char		*address_2;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	void		*mlx;
+	void		*mlx_win;
+	void		*img;
+	void		*img_2;
 	char		**array;
 	int			y_size;
 	int			x_size;
 	int			res_x;
 	int			res_y;
-	void		*mlx;
-	void		*mlx_win;
-	void		*img;
 	char		*north_id;
 	char		*south_id;
 	char		*east_id;
 	char		*west_id;
 	char		*floor_id;
 	char		*ceilling_id;
+	int			floor_RGB;
+	int			ceilling_RGB;
 	// void		*wall_img;
 	t_image		image;
 	t_raycast	raycast;
+	t_game_2	texture[4];
+	t_texture	t;
 }				t_game;
 
 
@@ -91,6 +119,7 @@ int		ft_get_max_y(char	**array);
 int		ft_get_max_x(char	**array);
 int		ft_close_cross(t_game	*game);
 int		ft_close_esc(int keycode, t_game	*game);
+int		ft_atoi_color(char *str);
 
 /*********** LIBFT ***********/
 char	*ft_strdup(char *src);
@@ -101,6 +130,8 @@ void	ft_bzero( void *pointer, size_t count );
 // int	ft_strlen(char *str);
 
 /********* RAYCASTING *********/
-int	ft_raycasting(t_game	*game, t_raycast	*raycast);
+int		ft_raycasting(t_game	*game, t_raycast	*raycast);
+void	ft_put_color(t_game	*game, t_raycast	*raycast);
+void	ft_get_texture(t_game	*game);
 
 #endif

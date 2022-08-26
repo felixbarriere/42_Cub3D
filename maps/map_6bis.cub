@@ -1,3 +1,10 @@
+F 255, 000, 000
+C 000, 000, 000
+NO ./img/wall.xpm
+SO ./img/wall.xpm
+WE ./img/wall.xpm
+EA ./img/wall.xpm
+
 11111111111111111
 10000000111111111
 100000000000W0001

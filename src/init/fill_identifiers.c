@@ -2,9 +2,9 @@
 
 char	*get_identifier_3(char	*line, int	i)
 {
-	while (line[i] == '.')
+	while (line[i] != '.')
 			i++;
-	return (ft_substr(line, i, (ft_strlen(line) - i + 1)));
+	return (ft_substr(line, i, (ft_strlen(line) - i)));
 }
 
 char	*get_identifier_2(char	*line, int	i)
