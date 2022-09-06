@@ -4,7 +4,6 @@ SRCS = 	main.c \
 		src/init/fill_array.c \
 		src/init/fill_identifiers.c \
 		src/init/init.c \
-		src/init/create_map.c \
 		src/raycasting/raycasting.c \
 		src/raycasting/raycasting_2.c \
 		src/raycasting/raycasting_utils.c \

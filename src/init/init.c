@@ -1,5 +1,8 @@
 #include "../../includes/cub_3d.h"
 
+// https://stackoverflow.com/questions/19277010/bit-shift-and-bitwise-operations-to-encode-rgb-values
+// int code = (blue * 256 * 256) + (green * 256) + red
+
 int		ft_atoi_color(char *str)
 {
 	int	i;
@@ -29,9 +32,9 @@ int	ft_close_cross(t_game	*game)
 	exit(0);
 }
 
-int	ft_close_esc(int keycode, t_game	*game)
+int	ft_close_esc(int	keycode, t_game	*game)
 {
-	if (keycode == 1) // trouver le bon keycode pour linux
+	if (keycode == 65307) // trouver le bon keycode pour linux
 	{
 		printf ("Closing game");
 		mlx_destroy_window (game->mlx, game->mlx_win);
@@ -85,16 +88,11 @@ void	ft_init_2(t_game	*game)
 	game->floor_RGB = 0;
 	game->ceilling_RGB = 0;
 	game->mlx = mlx_init();
-	// printf("game->floor_id: %s", game->floor_id);
-	// printf("lenght game->floor_id: %d", ft_strlen(game->floor_id));
-	// printf("game->ceilling_id: %s", game->ceilling_id);
-	// printf("lenght game->ceilling_id: %d", ft_strlen(game->ceilling_id));
 	game->floor_RGB = ft_atoi_color(game->floor_id);
 	game->ceilling_RGB = ft_atoi_color(game->ceilling_id);
 
-	mlx_get_screen_size(game->mlx, &game->x_size, &game->y_size);
-	game->res_x = game->x_size;
-	game->res_y = game->y_size;
+	mlx_get_screen_size(game->mlx, &game->res_x, &game->res_y);
+
 	// attention: worldMap[mapWidth][mapHeight] (inverser x et y);
 	game->raycast.char_pos_y = ft_elt_pos_x(game->array);
 	game->raycast.char_pos_x = ft_elt_pos_y(game->array);
@@ -104,12 +102,7 @@ void	ft_init_2(t_game	*game)
 	game->raycast.mapy = (int)game->raycast.charpos_y_2;
 	ft_vector_dir(&game->raycast, game->array);
 
-	// game->image.wall = ft_img(game->mlx, "img/wall.xpm");
-	// game->image.floor = ft_img(game->mlx, "img/floor.xpm");
 	game->mlx_win = NULL;
-	// game->img = mlx_new_image(game->mlx, game->res_x, game->res_y);
-	// game->address = mlx_get_data_addr(game->img, &game->bits_per_pixel,
-	// 						&game->line_length, &game->endian);
 }
 
 void	ft_init(t_raycast	*raycast)
@@ -138,18 +131,18 @@ void	ft_start(t_game	*game)
 	ft_init_2(game);
 	ft_get_texture(game);
 	game->img = mlx_new_image(game->mlx, game->res_x, game->res_y);
-	game->address = mlx_get_data_addr(game->img, &game->bits_per_pixel,
+	game->address = (int *)mlx_get_data_addr(game->img, &game->bits_per_pixel,
 					&game->line_length, &game->endian);
-	ft_raycasting(game, &game->raycast);
-	// ft_fill_flo(game,  game->x_size,  game->y_size, game->array); // a enlever avant la 3D
 	game->mlx_win = mlx_new_window(game->mlx, game->res_x,
 						game->res_y, "Cub3D");
-	game->img_2 = mlx_new_image(game->mlx,  game->res_x, game->res_y);
-	game->address_2 = mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
-					&game->line_length, &game->endian);
-	mlx_hook(game->mlx_win, 2, 1L << 0, ft_close_esc, game);
+	ft_raycasting(game, &game->raycast);
+
+	// game->img_2 = mlx_new_image(game->mlx,  game->res_x, game->res_y);
+	// game->address_2 = mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
+	// 				&game->line_length, &game->endian);
 	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
-	mlx_loop_hook(game->mlx, ft_raycasting, game); //segfault
+	mlx_hook(game->mlx_win, 2, 1L << 0, ft_close_esc, game);
+	// mlx_loop_hook(game->mlx, ft_raycasting, game); //segfault
 	mlx_loop(game->mlx);
 
 	free(game->mlx);

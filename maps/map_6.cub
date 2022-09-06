@@ -1,4 +1,4 @@
-C  255,20 ,30
+C  000, 000, 000
 R  2147483647 2147483647
 NO      ./textures/eagle.xpm
 SO ./textures/greystone.xpm
@@ -6,7 +6,7 @@ EA ./textures/red.xpm
 WE ./textures/purplestone.xpm
 
 S ./textures/tonneau.xpm
-F  000, 000, 00
+F  255, 000, 255
 
 11111111111111111
 10000000111111111

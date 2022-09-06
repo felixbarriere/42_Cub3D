@@ -24,7 +24,7 @@ int	main(int	argc, char **argv)
 
 	// pk la MLX ne prend pas north_id?
 	printf("game->north_id: %s", game.north_id);
-	printf("lenght game->north_id: %d", ft_strlen(game.north_id));
+	printf("lenght game->north_id: %d\n", ft_strlen(game.north_id));
 	// il faudra réajuster la map en ajoutant des 1 a la place des espaces 
 	// exterieurs pour allouer correctement.
 

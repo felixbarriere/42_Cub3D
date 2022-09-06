@@ -4,25 +4,15 @@ void	ft_init_raycast(t_game	*game, t_raycast	*raycast)
 {
 	raycast->hit = 0;
 	raycast->perpwalldist = 0;
-	// printf("raycast->x init: %d\n", raycast->x);
-	// printf("(double)game->res_x init: %f\n", (double)game->res_x);
 
 	raycast->camerax = 2 * raycast->x / (double)game->res_x - 1;
-	// printf("raycast->raydiry init: %f\n", raycast->raydiry);
-	// printf("raycast->raydirx init: %f\n",raycast->raydirx);
-	// printf("raycast->planx: %f\n",raycast->planx);
-	// printf("raycast->plany: %f\n", raycast->plany);
-	// printf("raycast->camerax: %f\n", raycast->camerax);
 	raycast->raydirx = raycast->dirx + raycast->planx * raycast->camerax;
 	raycast->raydiry = raycast->diry + raycast->plany * raycast->camerax;
-	// printf("raycast->raydiry : %f\n", raycast->raydiry);
-	// printf("raycast->raydirx : %f\n",raycast->raydirx);
+
 	// raycast->movespeed = 0.1;		//a refaire
 	// raycast->rotspeed = 0.033 * 1.8; //a refaire
 	raycast->mapx = (int)raycast->charpos_x_2;
 	raycast->mapy = (int)raycast->charpos_y_2;
-	// printf("(double)raycast->mapx init: %f\n", (double)raycast->mapx);
-	// printf("(double)raycast->mapy init: %f\n", (double)raycast->mapy);
 	if (raycast->raydiry == 0)
 		raycast->deltadistx = 0;
 	else if (raycast->raydirx == 0)
@@ -45,10 +35,6 @@ void	ft_calculate_height(t_game	*game, t_raycast	*raycast)
 {
 	// perpwalldist est perpendiculaire au plane et s'arrrete lors d'un hit.
 	// Il permet d'eviter d'utiliser la distance euclidienne et l'effet fisheye.
-	// printf("(double)raycast->mapx init: %f\n", (double)raycast->mapx);
-	// printf("raycast->charpos_x_2: %f\n", raycast->charpos_x_2);
-	// printf("(double)raycast->stepx init: %f\n", (double)raycast->stepx);
-	// printf("raycast->raydirx: %f\n", raycast->raydirx); //KO
 	if (raycast->side == 0)
 		raycast->perpwalldist = ((double)raycast->mapx - raycast->charpos_x_2
 					+ (1 - (double)raycast->stepx) / 2) / raycast->raydirx;
@@ -65,9 +51,6 @@ void	ft_calculate_height(t_game	*game, t_raycast	*raycast)
 	raycast->drawend = raycast->lineheight / 2 + game->res_y / 2;
 	if (raycast->drawend >= game->res_y || raycast->drawend < 0)
 		raycast->drawend = game->res_y - 1;
-	// printf("raycast->lineheight: %d\n", raycast->lineheight);
-	// printf("raycast->drawend: %d\n", raycast->drawend);
-	// printf("raycast->drawstart: %d\n", raycast->drawstart);
 }
 
 void	ft_perform_DDA(t_game	*game, t_raycast	*raycast)
@@ -86,13 +69,9 @@ void	ft_perform_DDA(t_game	*game, t_raycast	*raycast)
 			raycast->mapy += raycast->stepy;
 			raycast->side = 1;
 		}
-		// printf("raycast->stepx: %d\n", raycast->stepx);   //KO!
-		// printf("raycast->stepy: %d\n", raycast->stepy);
-		// printf("(double)raycast->mapx 2: %f\n", (double)raycast->mapx);
-		// printf("(double)raycast->mapy 2: %f\n", (double)raycast->mapy);
 		if (game->array[raycast->mapx][raycast->mapy] == '1')
 		{
-			printf("hit\n");
+			// printf("hit\n");
 			raycast->hit = 1;
 		}
 	}
@@ -101,7 +80,6 @@ void	ft_perform_DDA(t_game	*game, t_raycast	*raycast)
 
 void	ft_calculate_sidedist(t_game	*game, t_raycast	*raycast)
 {
-	// printf("raycast->raydirx: %f\n", raycast->raydirx);
 	if (raycast->raydirx < 0)
 	{
 		raycast->stepx = -1;
@@ -132,8 +110,7 @@ void	ft_calculate_sidedist(t_game	*game, t_raycast	*raycast)
 int	ft_raycasting(t_game	*game, t_raycast	*raycast)
 {
 	// printf("raycasting starts\n");
-
-	// while (raycast->x < 2050)
+	raycast->x = 0;
 	while (raycast->x < game->res_x)
 	{
 		ft_init_raycast(game, raycast); //calcule camerax, raydir et deltadist (distance entre chaque point d'intersection vert/hor) 

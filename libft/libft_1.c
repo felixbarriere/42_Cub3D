@@ -27,10 +27,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, int start, int len)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	char	*substr;
 
 	substr = (char *)malloc(sizeof(*s) * (len + 1));

@@ -61,7 +61,7 @@ typedef struct		s_texture
 
 typedef struct s_game_2
 {
-	char		*address;
+	int			*address;
 	int			line_length;
 	int			bits_per_pixel;
 	int			endian;
@@ -72,8 +72,8 @@ typedef struct s_game_2
 }		t_game_2;
 
 typedef struct s_game {
-	char		*address;
-	char		*address_2;
+	int			*address;
+	int			*address_2;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -82,8 +82,8 @@ typedef struct s_game {
 	void		*img;
 	void		*img_2;
 	char		**array;
-	int			y_size;
 	int			x_size;
+	int			y_size;
 	int			res_x;
 	int			res_y;
 	char		*north_id;
@@ -105,26 +105,24 @@ typedef struct s_game {
 char	**fill_array(char	*file, t_game	*game);
 void	ft_start(t_game	*game);
 void	get_identifier(char	*line, t_game	*game);
-void	ft_fill_flo(t_game	*game, int x, int y, char **tab);
 
 /*********** FREE ***********/
 void	ft_free_array(char **array);
 void	ft_free_all(t_game	*game);
 
 /*********** UTILS ***********/
-void	*ft_img(void *mlx, char *path);
 int		ft_elt_pos_x(char	**array);
 int		ft_elt_pos_y(char	**array);
 int		ft_get_max_y(char	**array);
 int		ft_get_max_x(char	**array);
 int		ft_close_cross(t_game	*game);
-int		ft_close_esc(int keycode, t_game	*game);
+int		ft_close_esc(int	keycode, t_game	*game);
 int		ft_atoi_color(char *str);
 
 /*********** LIBFT ***********/
 char	*ft_strdup(char *src);
 int		ft_strncmp(char *s1, char *s2, int n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(char *s, int start, int len);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero( void *pointer, size_t count );
 // int	ft_strlen(char *str);
