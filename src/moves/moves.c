@@ -15,3 +15,15 @@ void	ft_forward(t_game *game, t_raycast	*raycast)
 			raycast->charpos_y_2 += raycast->diry * raycast->movespeed;
 	}
 }
+
+void	ft_swap_img(t_game	*game)
+{
+	void	*temp;
+
+	temp = game->img;
+	game->img = game->img_2;
+	game->img_2 = temp;
+	temp = game->address;
+	game->address = game->address_2;
+	game->address_2 = temp;
+}

@@ -135,6 +135,7 @@ int	ft_raycasting(t_game	*game, t_raycast	*raycast)
 	}
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
 					game->img, 0, 0);
-	// ft_forward(game);
+	ft_forward(game, raycast);
+	ft_swap_img(game);
 	return (0);
 }

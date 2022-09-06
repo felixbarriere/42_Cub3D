@@ -29,4 +29,6 @@ void	ft_free_all(t_game	*game)
 		free(game->west_id);
 	if (game->east_id)
 		free(game->east_id);
+	free(game->mlx);
+	free(game->mlx_win);
 }

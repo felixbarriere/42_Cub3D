@@ -141,5 +141,6 @@ void	ft_get_texture(t_game	*game);
 
 /*********** MOVES ***********/
 void	ft_forward(t_game *game, t_raycast	*raycast);
+void	ft_swap_img(t_game	*game);
 
 #endif
