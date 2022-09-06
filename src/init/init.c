@@ -67,12 +67,15 @@ void		ft_vector_dir(t_raycast	*raycast, char	**array)
 
 void	ft_init_2(t_game	*game)
 {
+	game->mv_forward = 0;
+	game->mv_back = 0;
+	game->mv_left = 0;
+	game->mv_right = 0;
 	game->floor_RGB = 0;
 	game->ceilling_RGB = 0;
 	game->mlx = mlx_init();
 	game->floor_RGB = ft_atoi_color(game->floor_id);  //attention il manque le calcul principal
 	game->ceilling_RGB = ft_atoi_color(game->ceilling_id);
-
 	mlx_get_screen_size(game->mlx, &game->res_x, &game->res_y);
 
 	// attention: worldMap[mapWidth][mapHeight] (inverser x et y);
@@ -83,7 +86,6 @@ void	ft_init_2(t_game	*game)
 	game->raycast.mapx = (int)game->raycast.charpos_x_2;
 	game->raycast.mapy = (int)game->raycast.charpos_y_2;
 	ft_vector_dir(&game->raycast, game->array);
-
 	game->mlx_win = NULL;
 }
 

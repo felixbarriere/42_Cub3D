@@ -19,13 +19,33 @@ int	ft_close_cross(t_game	*game)
 	exit(0);
 }
 
-int	ft_close_esc(int	keycode, t_game	*game)
+int	ft_keys(int	keycode, t_game	*game)
 {
 	if (keycode == 65307) // trouver le bon keycode pour linux
 	{
 		printf ("Closing game");
 		mlx_destroy_window (game->mlx, game->mlx_win);
 		exit(0);
+	}
+	else if (keycode == 122)  //linux QWERTY: 119, linux AZERTY: 122
+	{
+		printf("Z = forward\n");
+		game->mv_forward = 1;
+	}
+	else if (keycode == 115)
+	{
+		printf("S = back\n");
+		game->mv_back = 1;
+	}
+	else if (keycode == 100)
+	{
+		printf("D = right\n");
+		game->mv_right = 1;
+	}
+	else if (keycode == 113)  //linux QWERTY: 97, linux AZERTY: 113
+	{
+		printf("Q = left\n");
+		game->mv_left = 1;
 	}
 	return (0);
 }
@@ -43,10 +63,10 @@ void	ft_start(t_game	*game)
 	ft_raycasting(game, &game->raycast);
 
 	// game->img_2 = mlx_new_image(game->mlx,  game->res_x, game->res_y);
-	// game->address_2 = mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
+	// game->address_2 = (int *)mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
 	// 				&game->line_length, &game->endian);
 	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
-	mlx_hook(game->mlx_win, 2, 1L << 0, ft_close_esc, game);
+	mlx_hook(game->mlx_win, 2, 1L << 0, ft_keys, game);
 	// mlx_loop_hook(game->mlx, ft_raycasting, game); //segfault
 	mlx_loop(game->mlx);
 

@@ -94,7 +94,10 @@ typedef struct s_game {
 	char		*ceilling_id;
 	int			floor_RGB;
 	int			ceilling_RGB;
-	// void		*wall_img;
+	int			mv_forward;
+	int			mv_back;
+	int			mv_right;
+	int			mv_left;
 	t_image		image;
 	t_raycast	raycast;
 	t_game_2	texture[4];
@@ -135,5 +138,8 @@ void	ft_init_2(t_game	*game);
 int		ft_raycasting(t_game	*game, t_raycast	*raycast);
 void	ft_put_color(t_game	*game, t_raycast	*raycast);
 void	ft_get_texture(t_game	*game);
+
+/*********** MOVES ***********/
+void	ft_forward(t_game *game, t_raycast	*raycast);
 
 #endif
