@@ -127,6 +127,10 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero( void *pointer, size_t count );
 // int	ft_strlen(char *str);
 
+/************ INIT ************/
+void	ft_init(t_raycast	*raycast);
+void	ft_init_2(t_game	*game);
+
 /********* RAYCASTING *********/
 int		ft_raycasting(t_game	*game, t_raycast	*raycast);
 void	ft_put_color(t_game	*game, t_raycast	*raycast);

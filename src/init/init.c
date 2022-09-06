@@ -25,24 +25,6 @@ int		ft_atoi_color(char *str)
 	return (res);
 }
 
-int	ft_close_cross(t_game	*game)
-{
-	printf ("Closing game");
-	mlx_destroy_window(game->mlx, game->mlx_win);
-	exit(0);
-}
-
-int	ft_close_esc(int	keycode, t_game	*game)
-{
-	if (keycode == 65307) // trouver le bon keycode pour linux
-	{
-		printf ("Closing game");
-		mlx_destroy_window (game->mlx, game->mlx_win);
-		exit(0);
-	}
-	return (0);
-}
-
 void	ft_fill_dir_plane(int	dir_zero, int	neg_one, int	one, int plan_zero)
 {
 	dir_zero = 0;
@@ -88,7 +70,7 @@ void	ft_init_2(t_game	*game)
 	game->floor_RGB = 0;
 	game->ceilling_RGB = 0;
 	game->mlx = mlx_init();
-	game->floor_RGB = ft_atoi_color(game->floor_id);
+	game->floor_RGB = ft_atoi_color(game->floor_id);  //attention il manque le calcul principal
 	game->ceilling_RGB = ft_atoi_color(game->ceilling_id);
 
 	mlx_get_screen_size(game->mlx, &game->res_x, &game->res_y);
@@ -125,29 +107,7 @@ void	ft_init(t_raycast	*raycast)
 	raycast->x = 0;
 }
 
-void	ft_start(t_game	*game)
-{
-	ft_init(&game->raycast);
-	ft_init_2(game);
-	ft_get_texture(game);
-	game->img = mlx_new_image(game->mlx, game->res_x, game->res_y);
-	game->address = (int *)mlx_get_data_addr(game->img, &game->bits_per_pixel,
-					&game->line_length, &game->endian);
-	game->mlx_win = mlx_new_window(game->mlx, game->res_x,
-						game->res_y, "Cub3D");
-	ft_raycasting(game, &game->raycast);
 
-	// game->img_2 = mlx_new_image(game->mlx,  game->res_x, game->res_y);
-	// game->address_2 = mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
-	// 				&game->line_length, &game->endian);
-	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
-	mlx_hook(game->mlx_win, 2, 1L << 0, ft_close_esc, game);
-	// mlx_loop_hook(game->mlx, ft_raycasting, game); //segfault
-	mlx_loop(game->mlx);
-
-	free(game->mlx);
-	free(game->mlx_win);
-}
 
 
 
