@@ -105,10 +105,6 @@ typedef struct s_game {
 }				t_game;
 
 
-char	**fill_array(char	*file, t_game	*game);
-void	ft_start(t_game	*game);
-void	get_identifier(char	*line, t_game	*game);
-
 /*********** FREE ***********/
 void	ft_free_array(char **array);
 void	ft_free_all(t_game	*game);
@@ -135,6 +131,10 @@ int		ft_atoi(char *str);
 /************ INIT ************/
 void	ft_init(t_raycast	*raycast);
 void	ft_init_2(t_game	*game);
+char	**ft_fill_map_2(char	**map);
+char	**fill_array(char	*file, t_game	*game);
+void	ft_start(t_game	*game);
+void	get_identifier(char	*line, t_game	*game);
 
 /********* RAYCASTING *********/
 int		ft_raycasting(t_game	*game, t_raycast	*raycast);

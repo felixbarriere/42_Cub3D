@@ -118,14 +118,17 @@ int	main(int	argc, char **argv)
 	game.array = fill_array(argv[1], &game);
 
 	// il faudra réajuster la map en ajoutant des 1 a la place des espaces 
-	// exterieurs pour allouer correctement.
+	// exterieurs pour allouer correctement:
 	// ft_fill_map
 	ft_print_map(game.array);
 
 	ft_init(&game.raycast);
 	ft_init_2(&game);
-	// remplacer la lettre du perso par un 0
-	// ft_fill_map_2;
+	
+	game.array = ft_fill_map_2(game.array);  // remplace la lettre du perso par un 0
+	ft_print_map(game.array);
+
+
 	ft_get_texture(&game);
 	ft_start(&game);
 	return (0);

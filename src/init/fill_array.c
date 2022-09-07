@@ -72,4 +72,29 @@ char	**fill_array(char	*file, t_game	*game)
 	return (tab);
 }
 
+char	**ft_fill_map_2(char	**map)
+{
+	// (void)map;
+	// printf("fill_array\n");
+	int	y;
+	int	x;
 
+	y = 0;
+	x = 0;
+	while (map[y])
+	{
+		x = 0;
+		while(map[y][x])
+		{
+			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'E' ||
+												map[y][x] == 'W')
+			{
+				map[y][x] = '0';
+				return (map);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (map);
+}
