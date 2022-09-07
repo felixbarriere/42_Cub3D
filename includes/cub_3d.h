@@ -128,6 +128,8 @@ int		ft_strncmp(char *s1, char *s2, int n);
 char	*ft_substr(char *s, int start, int len);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero( void *pointer, size_t count );
+char	**ft_split(char *s, char c);
+int		ft_atoi(char *str);
 // int	ft_strlen(char *str);
 
 /************ INIT ************/

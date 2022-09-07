@@ -41,7 +41,6 @@ void	ft_calculate_height(t_game	*game, t_raycast	*raycast)
 	else
 		raycast->perpwalldist = ((double)raycast->mapy - raycast->charpos_y_2
 					+ (1 - (double)raycast->stepy) / 2) / raycast->raydiry;
-	// printf("raycast->perpwalldist apres calcul: %f\n", raycast->perpwalldist);
 	// calcul de la taille de la colonne
 	raycast->lineheight = (int)(game->res_y / raycast->perpwalldist);
 	raycast->drawstart = -raycast->lineheight / 2
@@ -109,7 +108,6 @@ void	ft_calculate_sidedist(t_game	*game, t_raycast	*raycast)
 
 int	ft_raycasting(t_game	*game, t_raycast	*raycast)
 {
-	// printf("raycasting starts\n");
 	raycast->x = 0;
 	while (raycast->x < game->res_x)
 	{

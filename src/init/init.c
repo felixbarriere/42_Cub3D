@@ -3,25 +3,23 @@
 // https://stackoverflow.com/questions/19277010/bit-shift-and-bitwise-operations-to-encode-rgb-values
 // int code = (blue * 256 * 256) + (green * 256) + red
 
-int		ft_atoi_color(char *str)
+int		ft_convert_color(char *str)
 {
-	int	i;
-	int	res;
+	char	**rgb;
+	// int		i;
+	int		res;
 
-	i = 0;
-	res = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ' || str[i] == ',' || (str[i] >= '\t' && str[i] <= '\r')
-										|| str[i] == '\n')
-			i++;
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			res = (10 * res) + (str[i] - '0');
-			i++;
-		}
-		i++;
-	}
+	rgb = ft_split(str, ',');
+	// i = 0;
+	// while (rgb[i])
+	// {
+	// 	if (i > 2)
+	// 		return (0);
+	// 	i++;
+	// }
+	// i = 0;
+	res = (ft_atoi(rgb[0]) * 256 * 256) + (ft_atoi(rgb[1]) * 256) + ft_atoi(rgb[2]);
+	ft_free_array (rgb);
 	return (res);
 }
 
@@ -74,8 +72,8 @@ void	ft_init_2(t_game	*game)
 	game->floor_RGB = 0;
 	game->ceilling_RGB = 0;
 	game->mlx = mlx_init();
-	game->floor_RGB = ft_atoi_color(game->floor_id);  //attention il manque le calcul principal
-	game->ceilling_RGB = ft_atoi_color(game->ceilling_id);
+	game->floor_RGB = ft_convert_color(game->floor_id);  //attention il manque le calcul principal
+	game->ceilling_RGB = ft_convert_color(game->ceilling_id);
 	mlx_get_screen_size(game->mlx, &game->res_x, &game->res_y);
 
 	// attention: worldMap[mapWidth][mapHeight] (inverser x et y);

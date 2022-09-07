@@ -11,6 +11,8 @@ SRCS = 	main.c \
 		src/free.c \
 		src/utils/utils.c\
 		libft/libft_1.c \
+		libft/libft_2.c \
+		libft/libft_3.c \
 
 
 OBJS = $(SRCS:.c=.o)
@@ -18,6 +20,7 @@ OBJS = $(SRCS:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra 
 #pour checker les leaks:
+# valgrind ou
 #-fsanitize=leaks -fsanitize=undefined  -fsanitize=address -g3
 
 NAME = CUB3D

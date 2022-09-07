@@ -33,4 +33,4 @@ void	get_identifier(char	*line, t_game	*game)
 		game->west_id = get_identifier_3(line, i);
 	else if (line[i] == 'E' && line[i + 1] == 'A')
 		game->east_id = get_identifier_3(line, i);
-}	
+}
