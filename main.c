@@ -85,7 +85,7 @@ void	ft_loop_hook(t_game	*game)
 {
 	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
 	mlx_hook(game->mlx_win, 2, 1L << 0, ft_keys, game);
-	mlx_hook(game->mlx_win, 3, 1L << 1, ft_keys_release, game);
+	// mlx_hook(game->mlx_win, 3, 1L << 1, ft_keys_release, game);
 	mlx_loop(game->mlx);
 }
 

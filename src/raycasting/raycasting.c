@@ -9,7 +9,7 @@ void	ft_init_raycast(t_game	*game, t_raycast	*raycast)
 	raycast->raydirx = raycast->dirx + raycast->planx * raycast->camerax;
 	raycast->raydiry = raycast->diry + raycast->plany * raycast->camerax;
 
-	raycast->movespeed = 0.1;		 		//a refaire
+	raycast->movespeed = 0.3;		 		//a refaire
 	raycast->rotspeed = 0.033 * 1.8; 		//a refaire
 	raycast->mapx = (int)raycast->charpos_x_2;
 	raycast->mapy = (int)raycast->charpos_y_2;

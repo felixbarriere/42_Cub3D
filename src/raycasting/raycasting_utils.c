@@ -44,14 +44,14 @@ void	ft_get_texture(t_game	*game)
 					&(game->texture[0].height))))
 		printf("img NO KO\n");
 	if (!(game->texture[1].img = mlx_xpm_file_to_image(game->mlx,
-					"./img/wall.xpm", &game->texture[1].width,
+					game->south_id, &game->texture[1].width,
 					&game->texture[1].height)))
 		printf("img SO KO\n");
 	game->texture[2].img = mlx_xpm_file_to_image(game->mlx,
-					"./img/wall.xpm", &game->texture[2].width,
+					game->west_id, &game->texture[2].width,
 					&game->texture[2].height);
 	game->texture[3].img = mlx_xpm_file_to_image(game->mlx,
-					"./img/wall.xpm", &game->texture[3].width,
+					game->east_id, &game->texture[3].width,
 					&game->texture[3].height);
 	ft_get_texture_add(game);
 }

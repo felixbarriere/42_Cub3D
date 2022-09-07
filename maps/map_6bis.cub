@@ -2,10 +2,10 @@ F 83, 65, 31
 C 000, 000, 000
 NO ./img/wall.xpm
 SO ./img/wall.xpm
-WE ./img/wall.xpm
-EA ./img/wall.xpm
+WE ./img/floor.xpm
+EA ./img/collectible.xpm
 
 11111111111111111
 10000000111111111
-1E000000000000001
+10000000000000W01
 11111111111111111
