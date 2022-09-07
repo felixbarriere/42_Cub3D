@@ -31,12 +31,12 @@ int	ft_keys(int	keycode, t_game	*game)
 	{
 		printf("W = forward\n");
 		game->mv_forward = 1;
-		ft_forward(game, &game->raycast);
+		// ft_forward(game, &game->raycast);
 		// game->img_2 = mlx_new_image(game->mlx, game->res_x, game->res_y);
 		// game->address_2 = (int *)mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
 		// 						&game->line_length, &game->endian);
 		// ft_swap_img(game);
-		// ft_raycasting(game, &game->raycast);
+		ft_raycasting(game, &game->raycast);
 	}
 	else if (keycode == 115)
 	{
@@ -97,14 +97,12 @@ void	ft_start(t_game	*game)
 	game->address = (int *)mlx_get_data_addr(game->img, &game->bits_per_pixel,
 								&game->line_length, &game->endian);
 	
-
-	game->img_2 = mlx_new_image(game->mlx, game->res_x, game->res_y);
-	game->address_2 = (int *)mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
-								&game->line_length, &game->endian);
 	ft_raycasting(game, &game->raycast);
 	ft_loop_hook(game);
 
-
+	// game->img_2 = mlx_new_image(game->mlx, game->res_x, game->res_y);
+	// game->address_2 = (int *)mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
+	// 							&game->line_length, &game->endian);
 }
 
 int	main(int	argc, char **argv)
