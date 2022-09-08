@@ -64,11 +64,15 @@ int	ft_keys(int	keycode, t_game	*game)
 	{
 		printf("rotate right\n");
 		game->rot_right = 1;
+		ft_rot(game, &game->raycast);
+		ft_raycasting(game, &game->raycast);
 	}
 	else if (keycode == XK_Left)
 	{
 		printf("rotate left\n");
 		game->rot_left = 1;
+		ft_rot(game, &game->raycast);
+		ft_raycasting(game, &game->raycast);
 	}
 	return (0);
 }
@@ -95,12 +99,12 @@ int	ft_keys_release(int	keycode, t_game	*game)
 		printf("A = left released\n");
 		game->mv_left = 0;
 	}
-	else if (keycode == 65363)
+	else if (keycode == XK_Right)
 	{
 		printf("release rotate right\n");
 		game->rot_right = 0;
 	}
-	else if (keycode == 65361)
+	else if (keycode == XK_Left)
 	{
 		printf("release rotate left\n");
 		game->rot_left = 0;
@@ -136,32 +140,33 @@ int	main(int	argc, char **argv)
 {
 	t_game	game;
 
-	(void)argc;   //a faire
+	if (argc != 2) //a faire
+	{
+		printf("Error\nIncorrect arguments number!\n"); //utiliser write (sortie d erreur) 
+        return (0);
+	}
 	game.array = NULL;
 	game.floor_id = NULL;
 	game.ceilling_id = NULL;
 	game.file = fill_file(argv[1], &game);
 	ft_print_map(game.file);
 	ft_init_elem(&game);
-
 	if (!check_file_name(argv[1]))   //marche pas, segfault a checker
 		return (0);
 	if(!ft_check_elem(&game) || !ft_check_map(&game))
     {
-        printf("Error\nIncorrect Map!\n");
+        printf("Error\nIncorrect Map!\n"); //utiliser write (sortie d erreur)
         ft_free_array(game.array);
         return (0);
     }
 	game.array = fill_array(argv[1], &game);
 	ft_print_map(game.array);
     ft_space(&game);
+	
 	ft_init(&game.raycast);
 	ft_init_2(&game);
-	
 	game.array = ft_fill_map_2(game.array);  // remplace la lettre du perso par '0'
 	ft_print_map(game.array);
-
-
 	ft_get_texture(&game);
 	ft_start(&game);
 	return (0);

@@ -183,5 +183,6 @@ void	ft_get_texture(t_game	*game);
 void	ft_forward_back(t_game *game, t_raycast	*raycast);
 void	ft_left_right(t_game *game, t_raycast	*raycast);
 void	ft_swap_img(t_game	*game);
+void	ft_rot(t_game *game, t_raycast	*raycast);
 
 #endif

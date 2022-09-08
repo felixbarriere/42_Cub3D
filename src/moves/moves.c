@@ -60,6 +60,42 @@ void	ft_left_right(t_game *game, t_raycast	*raycast)
 	}
 }
 
+void	ft_rot(t_game *game, t_raycast	*raycast)
+{
+	if (game->rot_right == 1)
+	{
+		double	old_dir_x;
+		double	old_plane_x;
+
+		old_dir_x = raycast->dirx;
+		raycast->dirx = raycast->dirx * cos(-raycast->rotspeed) - raycast->diry
+										* sin(-raycast->rotspeed);
+		raycast->diry = old_dir_x * sin(-raycast->rotspeed) + raycast->diry
+										* cos(-raycast->rotspeed);
+		old_plane_x = raycast->planx;
+		raycast->planx = raycast->planx * cos(-raycast->rotspeed) - raycast->plany
+										* sin(-raycast->rotspeed);
+		raycast->plany = old_plane_x * sin(-raycast->rotspeed) + raycast->plany
+										* cos(-raycast->rotspeed);
+	}
+	else if (game->rot_left == 1)
+	{
+		double	old_dir_x;
+		double	old_plane_x;
+
+		old_dir_x = raycast->dirx;
+		raycast->dirx = raycast->dirx * cos(raycast->rotspeed) - raycast->diry
+										* sin(raycast->rotspeed);
+		raycast->diry = old_dir_x * sin(raycast->rotspeed) + raycast->diry
+										* cos(raycast->rotspeed);
+		old_plane_x = raycast->planx;
+		raycast->planx = raycast->planx * cos(raycast->rotspeed) - raycast->plany
+										* sin(raycast->rotspeed);
+		raycast->plany = old_plane_x * sin(raycast->rotspeed) + raycast->plany
+										* cos(raycast->rotspeed);
+	}
+}
+
 void	ft_swap_img(t_game	*game)
 {
 	void	*temp;
