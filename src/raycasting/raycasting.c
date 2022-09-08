@@ -9,7 +9,7 @@ void	ft_init_raycast(t_game	*game, t_raycast	*raycast)
 	raycast->raydirx = raycast->dirx + raycast->planx * raycast->camerax;
 	raycast->raydiry = raycast->diry + raycast->plany * raycast->camerax;
 
-	raycast->movespeed = 0.3;		 		//a refaire
+	raycast->movespeed = 0.1;		 		//a refaire
 	raycast->rotspeed = 0.033 * 1.8; 		//a refaire
 	raycast->mapx = (int)raycast->charpos_x_2;
 	raycast->mapy = (int)raycast->charpos_y_2;
@@ -133,7 +133,8 @@ int	ft_raycasting(t_game	*game, t_raycast	*raycast)
 	}
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
 					game->img, 0, 0);
-	ft_forward(game, raycast);
+	// ft_forward_back(game, raycast);
+	// ft_left_right(game, raycast);
 	// ft_swap_img(game);
 	return (0);
 }

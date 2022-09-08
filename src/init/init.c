@@ -23,41 +23,41 @@ int		ft_convert_color(char *str)
 	return (res);
 }
 
-void	ft_fill_dir_plane(int	dir_zero, int	neg_one, int	one, int plan_zero)
-{
-	dir_zero = 0;
-	neg_one = -1;
-	one = 1;
-	plan_zero = 0;
-	(void)dir_zero;
-	(void)neg_one;
-	(void)one;
-	(void)plan_zero;
-}
+// void	ft_fill_dir_plane(int	dir_zero, int	neg_one, int	one, int plan_zero)   //sert a rien
+// {
+// 	dir_zero = 0;
+// 	neg_one = -1;
+// 	one = 1;
+// 	plan_zero = 0;
+// 	(void)dir_zero;
+// 	(void)neg_one;
+// 	(void)one;
+// 	(void)plan_zero;
+// }
 
 void		ft_vector_dir(t_raycast	*raycast, char	**array)
 {
 	if (array[raycast->char_pos_x][raycast->char_pos_y] == 'N')
 	{
-		ft_fill_dir_plane(raycast->diry, raycast->dirx, 1, raycast->planx);
+		// ft_fill_dir_plane(raycast->diry, raycast->dirx, 1, raycast->planx);
 		raycast->plany = 0.66;
 		raycast->dirx = -1;
 	}
 	else if (array[raycast->char_pos_x][raycast->char_pos_y] == 'S')
 	{
-		ft_fill_dir_plane(raycast->diry, -1, raycast->dirx, raycast->planx);
+		// ft_fill_dir_plane(raycast->diry, -1, raycast->dirx, raycast->planx);
 		raycast->plany = -0.66;
 		raycast->dirx = 1;
 	}
 	else if (array[raycast->char_pos_x][raycast->char_pos_y] == 'W')
 	{
-		ft_fill_dir_plane(raycast->dirx, raycast->diry, 1, raycast->plany);
+		// ft_fill_dir_plane(raycast->dirx, raycast->diry, 1, raycast->plany);
 		raycast->planx = -0.66;
 		raycast->diry = -1;
 	}
 	else if (array[raycast->char_pos_x][raycast->char_pos_y] == 'E')
 	{
-		ft_fill_dir_plane(raycast->dirx, -1, raycast->diry, raycast->plany);
+		// ft_fill_dir_plane(raycast->dirx, -1, raycast->diry, raycast->plany);
 		raycast->planx = 0.66;
 		raycast->diry = 1;
 	}

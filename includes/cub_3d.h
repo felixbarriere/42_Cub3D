@@ -6,8 +6,9 @@
 #include <stdio.h> //à enlever
 #include <stdlib.h>
 #include <fcntl.h>
-# include <string.h>
+#include <string.h>
 #include <fcntl.h>
+#include <X11/keysym.h>
 #include "../mlx/mlx.h"
 #include "../get_next_line/get_next_line.h"
 
@@ -98,6 +99,8 @@ typedef struct s_game {
 	int			mv_back;
 	int			mv_right;
 	int			mv_left;
+	int			rot_right;
+	int			rot_left;
 	t_image		image;
 	t_raycast	raycast;
 	t_game_2	texture[4];
@@ -142,7 +145,8 @@ void	ft_put_color(t_game	*game, t_raycast	*raycast);
 void	ft_get_texture(t_game	*game);
 
 /*********** MOVES ***********/
-void	ft_forward(t_game *game, t_raycast	*raycast);
+void	ft_forward_back(t_game *game, t_raycast	*raycast);
+void	ft_left_right(t_game *game, t_raycast	*raycast);
 void	ft_swap_img(t_game	*game);
 
 #endif

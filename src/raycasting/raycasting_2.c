@@ -55,9 +55,6 @@ void	ft_put_color(t_game	*game, t_raycast	*raycast)
 
 	// on part du ceilling jusqu'à la colonne, puis de la colonne jusqu'au floor
 	// en envoyant les couleurs(C/F)/textures(murs) correspondantes
-
-	//creer une fonction renvoyant un nombre unique pour les couleurs floor et ceiling 
-	// transformer le char * en un int (cf calcul)
 	
 	j = -1;
 	raycast->drawend = game->res_y - raycast->drawstart;
