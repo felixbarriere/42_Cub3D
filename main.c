@@ -136,17 +136,25 @@ int	main(int	argc, char **argv)
 {
 	t_game	game;
 
-	(void)argc;
+	(void)argc;   //a faire
 	game.array = NULL;
 	game.floor_id = NULL;
 	game.ceilling_id = NULL;
+	game.file = fill_file(argv[1], &game);
+	ft_print_map(game.file);
+	ft_init_elem(&game);
+
+	if (!check_file_name(argv[1]))   //marche pas, segfault a checker
+		return (0);
+	if(!ft_check_elem(&game) || !ft_check_map(&game))
+    {
+        printf("Error\nIncorrect Map!\n");
+        ft_free_array(game.array);
+        return (0);
+    }
 	game.array = fill_array(argv[1], &game);
-
-	// il faudra réajuster la map en ajoutant des 1 a la place des espaces 
-	// exterieurs pour allouer correctement:
-	// ft_fill_map
-	// ft_print_map(game.array);
-
+	ft_print_map(game.array);
+    ft_space(&game);
 	ft_init(&game.raycast);
 	ft_init_2(&game);
 	

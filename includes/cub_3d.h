@@ -72,16 +72,31 @@ typedef struct s_game_2
 	
 }		t_game_2;
 
+typedef struct s_element
+{
+    int		index;
+    char	pos;
+    int		north;
+    int		south;
+    int		west;
+    int		east;
+    int		floor;
+    int		ceilling;
+    
+}        t_element;
+
 typedef struct s_game {
 	int			*address;
 	int			*address_2;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	int			line;
 	void		*mlx;
 	void		*mlx_win;
 	void		*img;
 	void		*img_2;
+	char		**file;
 	char		**array;
 	int			x_size;
 	int			y_size;
@@ -105,6 +120,7 @@ typedef struct s_game {
 	t_raycast	raycast;
 	t_game_2	texture[4];
 	t_texture	t;
+	t_element	element;
 }				t_game;
 
 
@@ -129,9 +145,28 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero( void *pointer, size_t count );
 char	**ft_split(char *s, char c);
 int		ft_atoi(char *str);
+int		ft_strcmp(char *s1, char *s2);
 // int	ft_strlen(char *str);
 
-/************ INIT ************/
+/*********** PARSING ***********/
+int     ft_check_elem(t_game *game);
+int		ft_check_elem_2(char **tab);
+int		ft_is_elem_correct(char **tab, t_game *game, int count);
+int		ft_is_elem_correct_2(char **tab, t_game *game);
+void    ft_init_elem(t_game *game);
+int		ft_check_color(char    *array);
+int		ft_file_correct(char **tab);
+int		ft_check_map(t_game *game);
+int		ft_check_map_2(t_game *game);
+int		ft_check_wall_2(t_game *game, int i, int j);
+int		ft_check_wall(t_game *game, int i, int j);
+int		ft_check_player(t_game *game);
+void	ft_space(t_game *game);
+char	**fill_file(char *file, t_game *game);
+void	ft_fill_map(t_game *game, int count);
+int		check_file_name(char *file);
+
+/************* INIT ************/
 void	ft_init(t_raycast	*raycast);
 void	ft_init_2(t_game	*game);
 char	**ft_fill_map_2(char	**map);

@@ -1,5 +1,6 @@
-F 83, 65, 31
-C 000, 000, 000
+F 83,65,31
+C 0,0,0
+
 NO ./img/collectible.xpm
 SO ./img/wall.xpm
 WE ./img/collectible.xpm

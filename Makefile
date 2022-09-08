@@ -1,6 +1,9 @@
 SRCS = 	main.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
+		src/parsing/check_elem.c \
+		src/parsing/check_map.c \
+		src/parsing/fill_map.c \
 		src/init/fill_array.c \
 		src/init/fill_identifiers.c \
 		src/init/init.c \
