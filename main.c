@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/09 17:08:36 by fbarrier          #+#    #+#             */
+/*   Updated: 2022/09/09 17:08:36 by fbarrier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/cub_3d.h"
 
 void	ft_print_map(char	**map)
@@ -121,7 +133,7 @@ int	main(int	argc, char **argv)
 {
 	t_game	game;
 
-	if (argc != 2) //a faire
+	if (argc != 2)
 	{
 		printf("Error\nIncorrect arguments number!\n"); //utiliser write (sortie d erreur) 
         return (0);
@@ -139,11 +151,8 @@ int	main(int	argc, char **argv)
         ft_free_array(game.file);
         return (0);
     }
-	// ft_print_map(game.file);
 	game.array = fill_array(argv[1], &game);
-	// ft_print_map(game.array);
     ft_space(&game);
-	
 	ft_init(&game.raycast);
 	ft_init_2(&game);
 	game.array = ft_fill_map_2(game.array);  // remplace la lettre du perso par '0'
