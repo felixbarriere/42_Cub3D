@@ -26,7 +26,7 @@ CFLAGS = -Wall -Werror -Wextra
 # valgrind ou
 #-fsanitize=leaks -fsanitize=undefined  -fsanitize=address -g3
 
-NAME = CUB3D
+NAME = cub3D
 HEADER = CUB3D.h
 
 .c.o:

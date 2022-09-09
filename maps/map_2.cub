@@ -1,3 +1,11 @@
+NO ./img/wall_02.xpm
+SO ./img/wall_03.xpm
+WE ./img/purple.xpm
+EA ./img/green.xpm
+
+C 70,70,70
+F 205,133333333,63
+
 11111111111111
 10000000000E01
 10111111101111

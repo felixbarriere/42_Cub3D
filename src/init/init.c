@@ -75,7 +75,8 @@ void	ft_init_2(t_game	*game)
 	game->floor_RGB = ft_convert_color(game->floor_id);  //attention il manque le calcul principal
 	game->ceilling_RGB = ft_convert_color(game->ceilling_id);
 	mlx_get_screen_size(game->mlx, &game->res_x, &game->res_y);
-
+	game->res_x = game->res_x / 2;
+	game->res_y = game->res_y / 2;
 	// attention: worldMap[mapWidth][mapHeight] (inverser x et y);
 	game->raycast.char_pos_y = ft_elt_pos_x(game->array);
 	game->raycast.char_pos_x = ft_elt_pos_y(game->array);

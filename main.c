@@ -29,51 +29,41 @@ int	ft_keys(int	keycode, t_game	*game)
 	}
 	else if (keycode == 119)  //linux QWERTY: 119, linux AZERTY: 122
 	{
-		// printf("W = forward\n");
 		game->mv_forward = 1;
-		// ft_forward(game, &game->raycast);
-		// game->img_2 = mlx_new_image(game->mlx, game->res_x, game->res_y);
-		// game->address_2 = (int *)mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
-		// 						&game->line_length, &game->endian);
-		// ft_swap_img(game);
 		ft_forward_back(game, &game->raycast);
-		ft_raycasting(game, &game->raycast);
+		// ft_raycasting(game, &game->raycast);
 	}
 	else if (keycode == 115)
 	{
-		printf("S = back\n");
 		game->mv_back = 1;
 		ft_forward_back(game, &game->raycast);
-		ft_raycasting(game, &game->raycast);
+		// ft_raycasting(game, &game->raycast);
 	}
 	else if (keycode == 100)
 	{
-		printf("D = right\n");
 		game->mv_right = 1;
 		ft_left_right(game, &game->raycast);
-		ft_raycasting(game, &game->raycast);
+		// ft_raycasting(game, &game->raycast);
 	}
 	else if (keycode == 97)  //linux QWERTY: 97, linux AZERTY: 113
 	{
-		printf("A = left\n");
 		game->mv_left = 1;
 		ft_left_right(game, &game->raycast);
-		ft_raycasting(game, &game->raycast);
+		// ft_raycasting(game, &game->raycast);
 	}
-	else if (keycode == XK_Right)
+	if (keycode == XK_Right)
 	{
-		printf("rotate right\n");
 		game->rot_right = 1;
 		ft_rot(game, &game->raycast);
-		ft_raycasting(game, &game->raycast);
+		// ft_raycasting(game, &game->raycast);
 	}
 	else if (keycode == XK_Left)
 	{
-		printf("rotate left\n");
 		game->rot_left = 1;
 		ft_rot(game, &game->raycast);
-		ft_raycasting(game, &game->raycast);
+		// ft_raycasting(game, &game->raycast);
 	}
+	ft_raycasting(game, &game->raycast);
 	return (0);
 }
 
@@ -81,32 +71,26 @@ int	ft_keys_release(int	keycode, t_game	*game)
 {
 	if (keycode == 119)  //linux QWERTY: 119, linux AZERTY: 122
 	{
-		printf("forward released\n");
 		game->mv_forward = 0;
 	}
 	else if (keycode == 115)
 	{
-		printf("S = back released\n");
 		game->mv_back = 0;
 	}
 	else if (keycode == 100)
 	{
-		printf("D = right released\n");
 		game->mv_right = 0;
 	}
 	else if (keycode == 97)  //linux QWERTY: 97, linux AZERTY: 113
 	{
-		printf("A = left released\n");
 		game->mv_left = 0;
 	}
 	else if (keycode == XK_Right)
 	{
-		printf("release rotate right\n");
 		game->rot_right = 0;
 	}
 	else if (keycode == XK_Left)
 	{
-		printf("release rotate left\n");
 		game->rot_left = 0;
 	}
 	return (0);
@@ -116,6 +100,7 @@ void	ft_loop_hook(t_game	*game)
 {
 	mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
 	mlx_hook(game->mlx_win, 2, 1L << 0, ft_keys, game);
+	// ft_raycasting(game, &game->raycast);
 	mlx_hook(game->mlx_win, 3, 1L << 1, ft_keys_release, game);  //remet mv a 0;
 	mlx_loop(game->mlx);
 }
@@ -130,10 +115,6 @@ void	ft_start(t_game	*game)
 	
 	ft_raycasting(game, &game->raycast);
 	ft_loop_hook(game);
-
-	// game->img_2 = mlx_new_image(game->mlx, game->res_x, game->res_y);
-	// game->address_2 = (int *)mlx_get_data_addr(game->img_2, &game->bits_per_pixel,
-	// 							&game->line_length, &game->endian);
 }
 
 int	main(int	argc, char **argv)
@@ -154,13 +135,13 @@ int	main(int	argc, char **argv)
 	ft_init_elem(&game);
 	if(!ft_check_elem(&game) || !ft_check_map(&game))
     {
-        printf("Error\nIncorrect Map!\n"); //utiliser write (sortie d erreur)
+        printf("Error\nIncorrect Map!hola\n"); //utiliser write (sortie d erreur)
         ft_free_array(game.file);
         return (0);
     }
-	ft_print_map(game.file);
+	// ft_print_map(game.file);
 	game.array = fill_array(argv[1], &game);
-	ft_print_map(game.array);
+	// ft_print_map(game.array);
     ft_space(&game);
 	
 	ft_init(&game.raycast);
