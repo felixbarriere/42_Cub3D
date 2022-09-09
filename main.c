@@ -166,7 +166,7 @@ int	main(int	argc, char **argv)
 	ft_init(&game.raycast);
 	ft_init_2(&game);
 	game.array = ft_fill_map_2(game.array);  // remplace la lettre du perso par '0'
-	ft_print_map(game.array);
+	// ft_print_map(game.array);
 	ft_get_texture(&game);
 	ft_start(&game);
 	return (0);

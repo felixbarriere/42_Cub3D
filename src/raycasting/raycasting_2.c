@@ -17,7 +17,7 @@ void	ft_init_texture(t_game	*game, t_raycast	*raycast)
 		game->t.wall_x =  raycast->charpos_x_2 +  raycast->perpwalldist \
 						*  raycast->raydirx;
 	game->t.wall_x -= floor((game->t.wall_x));
-	game->t.step = 0;
+	// game->t.step = 0;
 }
 
 void	ft_draw_texture(t_game	*game, t_raycast	*raycast, int	x, int	y)
@@ -46,6 +46,15 @@ void	ft_draw_texture(t_game	*game, t_raycast	*raycast, int	x, int	y)
 					game->texture[game->t.tex_dir].line_length /
 					4 + game->t.tex_x];
 	}
+	// printf("game->t.tex_dir: %d\n", game->t.tex_dir);
+	// printf("raycast->drawend: %d\n", raycast->drawend);  //ok
+	// printf("game->t.tex_y: %d\n", game->t.tex_y);		//ok
+	// printf("game->t.tex_x: %d\n", game->t.tex_y);		//ok
+	// printf("game->t.step: %f\n", game->t.step);			//ok
+	// printf("game->t.tex_pos: %f\n", game->t.tex_pos);	//ok
+	// printf("game->address[y * game->line_length / 4 + x]: %d\n", game->address[y * game->line_length / 4 + x]); //ok
+	// printf("game->texture[game->t.tex_dir].address[game->t.tex_y * game->texture[game->t.tex_dir].line_length / 4 + game->t.tex_x]: %d\n", game->texture[game->t.tex_dir].address[game->t.tex_y * 
+	// 				game->texture[game->t.tex_dir].line_length / 4 + game->t.tex_x]);    //KO
 }
 
 void	ft_put_color(t_game	*game, t_raycast	*raycast)
@@ -58,6 +67,9 @@ void	ft_put_color(t_game	*game, t_raycast	*raycast)
 	
 	j = -1;
 	raycast->drawend = game->res_y - raycast->drawstart;
+	// printf("game->res_y: %d\n", game->res_y);
+	// printf("raycast->drawstart: %d\n", raycast->drawstart);
+	// printf("raycast->drawend: %d\n", raycast->drawend);
 	i = raycast->drawend;
 	while (++j < raycast->drawstart)
 		game->address[j * game->line_length / 4 + raycast->x]
