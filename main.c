@@ -145,20 +145,20 @@ int	main(int	argc, char **argv)
 		printf("Error\nIncorrect arguments number!\n"); //utiliser write (sortie d erreur) 
         return (0);
 	}
+	if (!check_file_name(argv[1]))
+		return (0);
 	game.array = NULL;
 	game.floor_id = NULL;
 	game.ceilling_id = NULL;
 	game.file = fill_file(argv[1], &game);
-	ft_print_map(game.file);
 	ft_init_elem(&game);
-	if (!check_file_name(argv[1]))   //marche pas, segfault a checker
-		return (0);
 	if(!ft_check_elem(&game) || !ft_check_map(&game))
     {
         printf("Error\nIncorrect Map!\n"); //utiliser write (sortie d erreur)
-        ft_free_array(game.array);
+        ft_free_array(game.file);
         return (0);
     }
+	ft_print_map(game.file);
 	game.array = fill_array(argv[1], &game);
 	ft_print_map(game.array);
     ft_space(&game);

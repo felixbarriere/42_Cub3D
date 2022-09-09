@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_elem.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hcherpre <hcherpre@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/09 14:08:24 by hcherpre          #+#    #+#             */
+/*   Updated: 2022/09/09 14:08:25 by hcherpre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub_3d.h"
 
 int    ft_check_elem(t_game *game)
@@ -106,11 +118,11 @@ void    ft_init_elem(t_game *game)
 
 int    ft_check_elem_2(char **tab)
 {
+    if (tab[2] != NULL || tab[1] == NULL)
+        return (0);
     if (tab[0][0] == 'N' || tab[0][0] == 'S'
         || tab[0][0] == 'W' || tab[0][0] == 'E')
     {
-        if (tab[2] != NULL || tab[1] == NULL)
-            return (0);
         tab[1][ft_strlen(tab[1]) - 1] = '\0';
         if (open(tab[1], O_RDONLY) == -1)
             return (0);
