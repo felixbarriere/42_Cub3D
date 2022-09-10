@@ -15,7 +15,6 @@
 void	ft_get_texture_add(t_game	*game)
 {
 	game->texture[0].address = NULL;
-
 	game->texture[0].address = (int *)mlx_get_data_addr(game->texture[0].img,
 			&game->texture[0].bits_per_pixel,
 			&game->texture[0].line_length, &game->texture[0].endian);
@@ -50,22 +49,17 @@ void	ft_init_texture_2(t_game	*game)
 void	ft_get_texture(t_game	*game)
 {
 	ft_init_texture_2(game);
-
-	if (!(game->texture[0].img = mlx_xpm_file_to_image(game->mlx,
-					game->north_id, &(game->texture[0].width),
-					&(game->texture[0].height))))
-		printf("img NO KO\n");
-	if (!(game->texture[1].img = mlx_xpm_file_to_image(game->mlx,
-					game->south_id, &game->texture[1].width,
-					&game->texture[1].height)))
-		printf("img SO KO\n");
-	if (!(game->texture[2].img = mlx_xpm_file_to_image(game->mlx,
-					game->west_id, &game->texture[2].width,
-					&game->texture[2].height)))
-		printf("img WE KO\n");
-	if (!(game->texture[3].img = mlx_xpm_file_to_image(game->mlx,
-					game->east_id, &game->texture[3].width,
-					&game->texture[3].height)))
-		printf("img EA KO\n");
+	game->texture[0].img = mlx_xpm_file_to_image(game->mlx,
+			game->north_id, &game->texture[0].width,
+			&game->texture[0].height);
+	game->texture[1].img = mlx_xpm_file_to_image(game->mlx,
+			game->south_id, &game->texture[1].width,
+			&game->texture[1].height);
+	game->texture[2].img = mlx_xpm_file_to_image(game->mlx,
+			game->west_id, &game->texture[2].width,
+			&game->texture[2].height);
+	game->texture[3].img = mlx_xpm_file_to_image(game->mlx,
+			game->east_id, &game->texture[3].width,
+			&game->texture[3].height);
 	ft_get_texture_add(game);
 }

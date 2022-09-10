@@ -13,16 +13,16 @@
 #ifndef CUB_3D_H
 # define CUB_3D_H
 
-#include <unistd.h>
-#include <math.h>
-#include <stdio.h> //à enlever
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
-#include <fcntl.h>
-#include <X11/keysym.h>
-#include "../mlx/mlx.h"
-#include "../get_next_line/get_next_line.h"
+# include <unistd.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <string.h>
+# include <fcntl.h>
+# include <X11/keysym.h>
+# include "../mlx/mlx.h"
+# include "../get_next_line/get_next_line.h"
 
 typedef struct s_image
 {
@@ -32,37 +32,37 @@ typedef struct s_image
 
 typedef struct s_raycast
 {
-	int			char_pos_x;		//position x du joueur
-	int			char_pos_y;		//position y du joueur
+	int			char_pos_x;
+	int			char_pos_y;
 	double		charpos_x_2;
 	double		charpos_y_2;
-	double		dirx; 			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	double		diry; 			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
-	double		planx;			//vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
-	double		plany; 			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
-	double		raydirx;	 	//calcul de direction x du rayon
-	double		raydiry; 		//calcul de direction y du rayon
-	double		camerax; 		//point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	int			mapx;			// coordonée x du carré dans lequel est le rayon
-	int			mapy; 			// coordonnée y du carré dans lequel est le rayon
-	double		sidedistx;	//distance que le rayon parcours jusqu'au premier point d'intersection x
-	double		sidedisty;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal
-	double		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
-	double		deltadisty; //distance que le rayon parcours entre chaque point d'intersection horizontal
-	int			stepx; 		// -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
-	int			stepy; 		// -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
-	int			hit; 		// 1 si un mur a ete touche, 0 sinon
-	int			side; 		// 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
-	double		perpwalldist; 	// distance du joueur au mur perpendiculaire
-	int			lineheight; 	//hauteur de la ligne a dessiner
-	int			drawstart;	 //position de debut ou il faut dessiner
-	int			drawend; 	//position de fin ou il faut dessiner
+	double		dirx;
+	double		diry;
+	double		planx;
+	double		plany;
+	double		raydirx;
+	double		raydiry;
+	double		camerax;
+	int			mapx;
+	int			mapy;
+	double		sidedistx;
+	double		sidedisty;
+	double		deltadistx;
+	double		deltadisty;
+	int			stepx;
+	int			stepy;
+	int			hit;
+	int			side;
+	double		perpwalldist;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
 	double		movespeed;
 	double		rotspeed;
-	int			x; 			//permet de parcourir tous les rayons
+	int			x;
 }	t_raycast;
 
-typedef struct		s_texture
+typedef struct s_texture
 {
 	int				tex_dir;
 	double			wall_x;
@@ -81,21 +81,19 @@ typedef struct s_game_2
 	int			height;
 	int			width;
 	void		*img;
-	
 }		t_game_2;
 
 typedef struct s_element
 {
-    int		index;
-    char	pos;
-    int		north;
-    int		south;
-    int		west;
-    int		east;
-    int		floor;
-    int		ceilling;
-    
-}        t_element;
+	int		index;
+	char	pos;
+	int		north;
+	int		south;
+	int		west;
+	int		east;
+	int		floor;
+	int		ceilling;
+}		t_element;
 
 typedef struct s_game {
 	int			*address;
@@ -120,8 +118,8 @@ typedef struct s_game {
 	char		*west_id;
 	char		*floor_id;
 	char		*ceilling_id;
-	int			floor_RGB;
-	int			ceilling_RGB;
+	int			floor_rgb;
+	int			ceilling_rgb;
 	int			mv_forward;
 	int			mv_back;
 	int			mv_right;
@@ -135,7 +133,6 @@ typedef struct s_game {
 	t_element	element;
 }				t_game;
 
-
 /*********** FREE ***********/
 void	ft_free_array(char **array);
 void	ft_free_all(t_game	*game);
@@ -146,7 +143,7 @@ int		ft_elt_pos_y(char	**array);
 int		ft_get_max_y(char	**array);
 int		ft_get_max_x(char	**array);
 int		ft_close_cross(t_game	*game);
-int		ft_close_esc(int	keycode, t_game	*game);
+int		ft_close_esc(int keycode, t_game *game);
 int		ft_atoi_color(char *str);
 
 /*********** LIBFT ***********/
@@ -158,15 +155,14 @@ void	ft_bzero( void *pointer, size_t count );
 char	**ft_split(char *s, char c);
 int		ft_atoi(char *str);
 int		ft_strcmp(char *s1, char *s2);
-// int	ft_strlen(char *str);
 
 /*********** PARSING ***********/
-int     ft_check_elem(t_game *game);
+int		ft_check_elem(t_game *game);
 int		ft_check_elem_2(char **tab);
 int		ft_is_elem_correct(char **tab, t_game *game, int count);
 int		ft_is_elem_correct_2(char **tab, t_game *game);
-void    ft_init_elem(t_game *game);
-int		ft_check_color(char    *array);
+void	ft_init_elem(t_game *game, char	*argv);
+int		ft_check_color(char *array);
 int		ft_file_correct(char **tab);
 int		ft_check_map(t_game *game);
 int		ft_check_map_2(t_game *game);
@@ -195,6 +191,7 @@ void	ft_get_texture(t_game	*game);
 void	ft_forward_back(t_game *game, t_raycast	*raycast);
 void	ft_left_right(t_game *game, t_raycast	*raycast);
 void	ft_swap_img(t_game	*game);
-void	ft_rot(t_game *game, t_raycast	*raycast);
+void	ft_rot_right(t_game *game, t_raycast	*raycast);
+void	ft_rot_left(t_game *game, t_raycast	*raycast);
 
 #endif

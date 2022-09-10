@@ -6,7 +6,7 @@
 /*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:08:24 by hcherpre          #+#    #+#             */
-/*   Updated: 2022/09/09 16:37:35 by fbarrier         ###   ########.fr       */
+/*   Updated: 2022/09/10 18:10:08 by fbarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,12 @@ int    ft_file_correct(char **tab)
     return (1);
 }
 
-void    ft_init_elem(t_game *game)
+void    ft_init_elem(t_game *game, char *argv)
 {
+    game->array = NULL;
+	game->floor_id = NULL;
+	game->ceilling_id = NULL;
+	game->file = fill_file(argv, game);
     game->element.north = 0;
     game->element.south = 0;
     game->element.west = 0;

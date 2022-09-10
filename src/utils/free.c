@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub_3d.h"
+#include "../../includes/cub_3d.h"
 
 void	ft_free_array(char **array)
 {
 	int	i;
 
 	i = 0;
-	while(array[i])
+	while (array[i])
 	{
 		free(array[i]);
 		i++;

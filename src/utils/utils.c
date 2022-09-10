@@ -63,7 +63,7 @@ int	ft_get_max_y(char	**array)
 	y = 0;
 	x = 0;
 	max_y = 0;
-	while(array[y][x])
+	while (array[y][x])
 	{
 		while (array[y] && array[y][x] != '\0' && array[y][x] != ' ')
 			y++;
@@ -85,7 +85,7 @@ int	ft_get_max_x(char	**array)
 	y = 0;
 	x = 0;
 	max_x = 0;
-	while(array[y] && array[y][x])
+	while (array[y] && array[y][x])
 	{
 		if ((ft_strlen(array[y]) - 1) >= max_x)
 			max_x = (ft_strlen(array[y]) - 1);

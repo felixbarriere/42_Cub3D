@@ -12,14 +12,14 @@
 
 #include "../../includes/cub_3d.h"
 
-char	*get_identifier_3(char	*line, int	i)
+char	*get_identifier_3(char *line, int i)
 {
 	while (line[i] != '.')
 			i++;
 	return (ft_substr(line, i, (ft_strlen(line) - i - 1)));
 }
 
-char	*get_identifier_2(char	*line, int	i)
+char	*get_identifier_2(char *line, int i)
 {
 	while (line[i] < '0' || line[i] > '9')
 			i++;

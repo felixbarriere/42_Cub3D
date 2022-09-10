@@ -6,7 +6,7 @@
 /*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:08:47 by hcherpre          #+#    #+#             */
-/*   Updated: 2022/09/09 16:44:14 by fbarrier         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:42:05 by fbarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,27 +141,26 @@ int    check_file_name(char *file)
 {
     if (open(file, O_RDONLY) == -1)
     {
-        // printf("Error\nCan't find file\n");
-        write(2, "Error\nCan't find file\n", ft_strlen("Error\nCan't find file\n"));
+        write(2, "Error\nCan't find file\n",
+                        ft_strlen("Error\nCan't find file\n"));
         return (0);
     }
     if (ft_strlen(file) < 5)
     {
-        // printf("Error\nIncorrect file\n");
-        write(2, "Error\nIncorrect file\n", ft_strlen("Error\nIncorrect file\n"));
+        write(2, "Error\nIncorrect file\n", 21);
         return (0);
     }
     if (file[ft_strlen(file) - 1] != 'b' || file[ft_strlen(file) - 2] != 'u'
         || file[ft_strlen(file) - 3] != 'c' || file[ft_strlen(file) - 4] != '.')
     {
-        // printf("Error\nIncorrect extention\n");
-        write(2, "Error\nIncorrect extention\n", ft_strlen("Error\nIncorrect extention\n"));
+        write(2, "Error\nIncorrect extention\n",
+                        ft_strlen("Error\nIncorrect extention\n"));
         return (0);
     }    
     if (file[0] == '.')
     {
-        // printf("Error\nIncorrect format\n");
-        write(2, "Error\nIncorrect format\n", ft_strlen("Error\nIncorrect format\n"));
+        write(2, "Error\nIncorrect format\n", 
+                        ft_strlen("Error\nIncorrect format\n"));
         return (0);
     }
     return (1);

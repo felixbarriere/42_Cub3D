@@ -11,7 +11,7 @@ SRCS = 	main.c \
 		src/raycasting/raycasting_2.c \
 		src/raycasting/raycasting_utils.c \
 		src/moves/moves.c \
-		src/free.c \
+		src/utils/free.c \
 		src/utils/utils.c\
 		libft/libft_1.c \
 		libft/libft_2.c \

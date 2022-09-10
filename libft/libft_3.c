@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_3.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/10 17:07:56 by fbarrier          #+#    #+#             */
+/*   Updated: 2022/09/10 17:08:42 by fbarrier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub_3d.h"
 
 int	ft_atoi(char *str)
@@ -23,12 +35,12 @@ int	ft_atoi(char *str)
 	return (res * sign);
 }
 
-int    ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-    int    i;
+	int	i;
 
-    i = 0;
-    while (s1[i] && s2[i] && s1[i] == s2[i])
-        i++;
-    return ((unsigned int)s1[i] - (unsigned int)s2[i]);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned int)s1[i] - (unsigned int)s2[i]);
 }

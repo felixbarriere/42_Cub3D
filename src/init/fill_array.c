@@ -50,6 +50,17 @@ static int	ft_count_lines(char *file)
 	return (i);
 }
 
+char	*get_identifier_loop(char	*line, t_game	*game, int fd)
+{
+	while (line && (ft_is_map(line) == 0))
+	{
+		get_identifier(line, game);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (line);
+}
+
 char	**fill_array(char	*file, t_game	*game)
 {
 	char	**tab;
@@ -65,12 +76,7 @@ char	**fill_array(char	*file, t_game	*game)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	while (line && (ft_is_map(line) == 0))
-	{
-		get_identifier(line, game);
-		free(line);
-		line = get_next_line(fd);
-	}
+	line = get_identifier_loop(line, game, fd);
 	while (line != 0)
 	{
 		tab[i] = line;
@@ -85,8 +91,6 @@ char	**fill_array(char	*file, t_game	*game)
 
 char	**ft_fill_map_2(char	**map)
 {
-	// (void)map;
-	// printf("fill_array\n");
 	int	y;
 	int	x;
 
@@ -95,7 +99,7 @@ char	**ft_fill_map_2(char	**map)
 	while (map[y])
 	{
 		x = 0;
-		while(map[y][x])
+		while (map[y][x])
 		{
 			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'E' ||
 												map[y][x] == 'W')
