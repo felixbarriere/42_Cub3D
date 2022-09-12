@@ -6,7 +6,7 @@
 /*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:08:39 by hcherpre          #+#    #+#             */
-/*   Updated: 2022/09/09 16:17:40 by fbarrier         ###   ########.fr       */
+/*   Updated: 2022/09/12 17:30:13 by fbarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,32 +67,38 @@ int    ft_check_wall(t_game *game, int i, int j)
             break ;
         b--;
     }
-    if (game->file[i][b] == '1')
+    if (game->file[i][0] == '1' || game->file[i][b] == '1')
+    {
         if (!ft_check_wall_2(game, i, j))
             return (0);
+    }
+    else if (game->file[i][0] == '0' || game->file[i][b] == '0'
+        || game->file[i][0] == ' ' || game->file[i][b] == ' ')
+        return (0);
     return (1);
 }
+
 int    ft_check_wall_2(t_game *game, int i, int j)
 {
     int    a;
 
     a = i;
-    while (game->file[a][j])
+    while (game->file[a] && game->file[a][j])
     {
         if (game->file[a][j] == '1' || game->file[a][j] == ' ')
             break ;
         a++;
     }
-    if (game->file[a][j] == ' ' || !game->file[a][j])
+    if (!game->file[a] || !game->file[a][j] || game->file[a][j] == ' ')
         return (0);
     a = i;
-    while (a >= game->element.index)
+    while (game->file[a] && game->file[a][j] && a >= game->element.index)
     {
-        if (game->file[a][j] == '1' || game->file[a][j] == ' ')
+        if (game->file[a][j] == '1' || game->file[a][j] == ' ')  //game->file[a][j] == '1' renvoie un invalid read, pk?
             break ;
         a--;
     }
-    if (game->file[a][j] == ' ' || !game->file[a][j])
+    if (!game->file[a] || (game->file[a][j] == ' ' || !game->file[a][j]))
         return (0);
     return (1);
 }
