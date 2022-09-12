@@ -137,6 +137,18 @@ void	ft_start(t_game	*game)
 	ft_loop_hook(game);
 }
 
+void	ft_print_map(char	**map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("map[i]: %s", map[i]);
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;

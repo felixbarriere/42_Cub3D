@@ -6,7 +6,7 @@
 /*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:08:39 by hcherpre          #+#    #+#             */
-/*   Updated: 2022/09/12 17:30:13 by fbarrier         ###   ########.fr       */
+/*   Updated: 2022/09/12 17:44:09 by fbarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ int    ft_check_wall_2(t_game *game, int i, int j)
     a = i;
     while (game->file[a] && game->file[a][j] && a >= game->element.index)
     {
-        if (game->file[a][j] == '1' || game->file[a][j] == ' ')  //game->file[a][j] == '1' renvoie un invalid read, pk?
+        // printf("game->file[a][j]: %c\n", game->file[a][j]);
+        // printf("a: %d\n", a);
+        // printf("j: %d\n", j);
+        if (game->file[a][j] == '1' || game->file[a][j] == ' ')  //game->file[a][j] == '1' renvoie un invalid read, pk? printer la map
             break ;
         a--;
     }
