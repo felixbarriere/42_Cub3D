@@ -9,7 +9,6 @@
 /*   Updated: 2022/09/09 17:08:44 by fbarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef CUB_3D_H
 # define CUB_3D_H
 
@@ -155,13 +154,14 @@ void	ft_bzero( void *pointer, size_t count );
 char	**ft_split(char *s, char c);
 int		ft_atoi(char *str);
 int		ft_strcmp(char *s1, char *s2);
+int		ft_isdigit(char *str);
 
 /*********** PARSING ***********/
 int		ft_check_elem(t_game *game);
 int		ft_check_elem_2(char **tab);
 int		ft_is_elem_correct(char **tab, t_game *game, int count);
 int		ft_is_elem_correct_2(char **tab, t_game *game);
-void	ft_init_elem(t_game *game, char	*argv);
+void	ft_init_elem(t_game *game);
 int		ft_check_color(char *array);
 int		ft_file_correct(char **tab);
 int		ft_check_map(t_game *game);
@@ -173,6 +173,10 @@ void	ft_space(t_game *game);
 char	**fill_file(char *file, t_game *game);
 void	ft_fill_map(t_game *game, int count);
 int		check_file_name(char *file);
+char	**ft_malloc_map(t_game *game);
+void	ft_check_fill_map(char	**tab, int count, int *k, int *j);
+void	ft_free_map(t_game *game, char **tab);
+int		ft_is_xpm(char **tab);
 
 /************* INIT ************/
 void	ft_init(t_raycast	*raycast);
@@ -193,5 +197,6 @@ void	ft_left_right(t_game *game, t_raycast	*raycast);
 void	ft_swap_img(t_game	*game);
 void	ft_rot_right(t_game *game, t_raycast	*raycast);
 void	ft_rot_left(t_game *game, t_raycast	*raycast);
+void	ft_loop_hook(t_game	*game);
 
 #endif
