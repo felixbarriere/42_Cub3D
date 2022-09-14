@@ -6,7 +6,7 @@
 /*   By: hcherpre <hcherpre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:07:56 by fbarrier          #+#    #+#             */
-/*   Updated: 2022/09/12 14:58:12 by hcherpre         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:38:36 by hcherpre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ int	ft_isdigit(char *str)
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9') && str[i] != '\n')
-		{
-			printf("str[i]: %c\n",str[i]);
 			return (0);
-		}
 		i++;
 	}
 	return (1);

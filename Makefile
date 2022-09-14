@@ -4,6 +4,7 @@ SRCS = 	main.c \
 		src/parsing/check_elem.c \
 		src/parsing/check_elem_2.c \
 		src/parsing/check_map.c \
+		src/parsing/check_map_2.c \
 		src/parsing/fill_map.c \
 		src/parsing/fill_file.c \
 		src/init/fill_array.c \

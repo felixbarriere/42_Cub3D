@@ -167,7 +167,7 @@ int		ft_file_correct(char **tab);
 int		ft_check_map(t_game *game);
 int		ft_check_map_2(t_game *game);
 int		ft_check_wall_2(t_game *game, int i, int j);
-int		ft_check_wall(t_game *game, int i, int j);
+int		ft_check_wall(t_game *game, int i, int j, int b);
 int		ft_check_player(t_game *game);
 void	ft_space(t_game *game);
 char	**fill_file(char *file, t_game *game);
@@ -177,6 +177,7 @@ char	**ft_malloc_map(t_game *game);
 void	ft_check_fill_map(char	**tab, int count, int *k, int *j);
 void	ft_free_map(t_game *game, char **tab);
 int		ft_is_xpm(char **tab);
+int		ft_check_wall_3(t_game *game, int i, int j);
 
 /************* INIT ************/
 void	ft_init(t_raycast	*raycast);
@@ -198,5 +199,6 @@ void	ft_swap_img(t_game	*game);
 void	ft_rot_right(t_game *game, t_raycast	*raycast);
 void	ft_rot_left(t_game *game, t_raycast	*raycast);
 void	ft_loop_hook(t_game	*game);
+void	ft_print_map(char	**map);
 
 #endif
