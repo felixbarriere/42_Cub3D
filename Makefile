@@ -2,11 +2,8 @@ SRCS = 	main.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		src/parsing/check_elem.c \
-		src/parsing/check_elem_2.c \
 		src/parsing/check_map.c \
-		src/parsing/check_map_2.c \
 		src/parsing/fill_map.c \
-		src/parsing/fill_file.c \
 		src/init/fill_array.c \
 		src/init/fill_identifiers.c \
 		src/init/init.c \
@@ -14,7 +11,6 @@ SRCS = 	main.c \
 		src/raycasting/raycasting_2.c \
 		src/raycasting/raycasting_utils.c \
 		src/moves/moves.c \
-		src/moves/hooks.c \
 		src/utils/free.c \
 		src/utils/utils.c\
 		libft/libft_1.c \

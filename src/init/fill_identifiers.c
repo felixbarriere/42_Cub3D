@@ -37,12 +37,12 @@ void	get_identifier(char	*line, t_game	*game)
 		game->floor_id = get_identifier_2(line, i);
 	else if (line[i] == 'C')
 		game->ceilling_id = get_identifier_2(line, i);
-	else if (line[i] == 'N')
+	else if (line[i] == 'N' && line[i + 1] == 'O')
 		game->north_id = get_identifier_3(line, i);
-	else if (line[i] == 'S')
+	else if (line[i] == 'S' && line[i + 1] == 'O')
 		game->south_id = get_identifier_3(line, i);
-	else if (line[i] == 'W')
+	else if (line[i] == 'W' && line[i + 1] == 'E')
 		game->west_id = get_identifier_3(line, i);
-	else if (line[i] == 'E')
+	else if (line[i] == 'E' && line[i + 1] == 'A')
 		game->east_id = get_identifier_3(line, i);
 }
