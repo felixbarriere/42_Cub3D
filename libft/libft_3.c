@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbarrier <fbarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcherpre <hcherpre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:07:56 by fbarrier          #+#    #+#             */
-/*   Updated: 2022/09/10 17:08:42 by fbarrier         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:38:36 by hcherpre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,18 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return ((unsigned int)s1[i] - (unsigned int)s2[i]);
+}
+
+int	ft_isdigit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] < '0' || str[i] > '9') && str[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
 }
